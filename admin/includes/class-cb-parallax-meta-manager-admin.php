@@ -84,7 +84,11 @@ class cb_parallax_meta_manager_admin {
 	 */
 	private function init() {
 
-		add_action( 'admin_enqueue_scripts', array( &$this, 'get_image_meta' ), 1 );
+		if( ! is_admin() ) {
+
+			add_action( 'admin_enqueue_scripts', array( &$this, 'get_image_meta' ), 1 );
+		}
+		
 		add_action( 'admin_enqueue_scripts', array( &$this, 'localize_script' ), 100 );
 	}
 
@@ -93,9 +97,9 @@ class cb_parallax_meta_manager_admin {
 	 *
 	 * @since    0.2.0
 	 */
-	public function get_image_meta() {
+	public function get_image_meta( $post ) {
 
-		global $post;
+		//global $post;
 
 		$image_attributes = null;
 		$attachment_id    = null;
