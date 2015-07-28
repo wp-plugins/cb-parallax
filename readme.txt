@@ -13,7 +13,7 @@ Allows users to create a custom background with an optional vertical parallax ef
 
 == Description ==
 
-A plugin for allowing users to set a custom background with an optional verticalparallax effect on a per-post basis.  This plugin hooks into the WordPress `custom-background` theme feature and overwrites the values on single post views if the post has been given a custom background.
+A plugin for allowing users to set a custom background with an optional vertical parallax effect on a per-post basis.  This plugin hooks into the WordPress `custom-background` theme feature and overwrites the values on single post views if the post has been given a custom background.
 
 ### Features ###
 
