@@ -1,0 +1,202 @@
+/**
+ * Admin style.
+ *
+ * @link              https://github.com/demispatti/cb-parallax
+ * @since             0.1.0
+ * @package           cb-parallax
+ * @subpackage        cb-parallax/admin/css
+ * Author:            Demis Patti <demis@demispatti.ch>
+ * Author URI:        http://demispatti.ch
+ * License:           GPL-2.0+
+ * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
+ */
+
+.cbp-parallax-enabled-container {
+    padding-top: 10px;
+}
+/* Parallax switch. */
+.cbp-input-container {
+    margin-top: 16px;
+}
+
+.label-for-cbp-switch {
+    display: inline-block;
+    margin-top: 3px;
+    margin-right: 12px;
+}
+
+/* Fancy Select. */
+div.fancy-select {
+    position: relative;
+}
+
+div.fancy-select.disabled {
+    opacity: 0.5;
+}
+
+div.fancy-select select:focus + div.trigger {
+    border-color: rgb(91, 157, 217);
+    box-shadow: 0 0 2px rgba(30, 140, 190, 0.8);
+}
+
+div.fancy-select select:focus + div.trigger.open {
+    box-shadow: none;
+
+}
+
+div.fancy-select div.trigger {
+    font-size: 13px;
+    box-sizing: border-box;
+    border-radius: 0;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    position: relative;
+    min-width: 100%;
+    width: 100%;
+    max-width: 100%;
+    padding-top: 4px;
+    padding-bottom: 2px;
+    padding-left: 4px;
+    margin: 0;
+    -webkit-transition: all 240ms ease-out;
+    -moz-transition: all 240ms ease-out;
+    -o-transition: all 240ms ease-out;
+    border: 1px solid rgb(231, 231, 231);
+    background-color: rgb(251, 251, 251);
+    -webkit-box-shadow: 0 1px 2px rgb(231, 231, 231) inset;
+    -moz-box-shadow: 0 1px 2px rgb(231, 231, 231) inset;
+    box-shadow: 0 1px 2px rgb(231, 231, 231) inset;
+    transition: all 0.2s;
+}
+
+div.fancy-select div.trigger:focus {
+    background-color: rgb(255, 255, 255);
+    transition: all 0.2s;
+}
+
+div.fancy-select div.trigger:after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: 5px solid transparent;
+    border-top-color: #4B5468;
+    top: 11px;
+    right: 12px;
+}
+
+div.fancy-select div.trigger.open {
+    background: rgb(246, 246, 246);
+    border: 1px solid rgb(226, 226, 226);
+    box-shadow: none;
+}
+
+div.fancy-select div.trigger.open:after {
+    border-top: 1px solid rgb(226, 226, 226);
+}
+
+div.fancy-select ul.options {
+    list-style: none;
+    margin: 0;
+    position: absolute;
+    top: 2px;
+    left: 0;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 1;
+    max-height: 300px;
+    overflow: auto;
+    border-radius: 0;
+    min-width: 100%;
+    width: 100%;
+    max-width: 100%;
+    transition: opacity 200ms ease-out, top 200ms ease-out, visibility 200ms ease-out;
+    -webkit-transition: opacity 200ms ease-out, top 200ms ease-out, visibility 200ms ease-out;
+    -moz-transition: opacity 200ms ease-out, top 200ms ease-out, visibility 200ms ease-out;
+    -ms-transition: opacity 200ms ease-out, top 200ms ease-out, visibility 200ms ease-out;
+    -o-transition: opacity 200ms ease-out, top 200ms ease-out, visibility 200ms ease-out;
+    border: 1px solid rgb(226, 226, 226);
+    -webkit-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    -moz-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+
+div.fancy-select ul.options.open {
+    visibility: visible;
+    top: 30px;
+    opacity: 1;
+    /* have to use a non-visibility transition to prevent this iOS issue (bug?): */
+    /*http://stackoverflow.com/questions/10736478/css-animation-visibility-visible-works-on-chrome-and-safari-but-not-on-ios*/
+    transition: opacity 300ms ease-out, top 300ms ease-out;
+    -webkit-transition: opacity 300ms ease-out, top 300ms ease-out;
+    -moz-transition: opacity 300ms ease-out, top 300ms ease-out;
+    -ms-transition: opacity 300ms ease-out, top 300ms ease-out;
+    -o-transition: opacity 300ms ease-out, top 300ms ease-out;
+    border: 1px solid rgb(226, 226, 226);
+    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+    -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+}
+
+div.fancy-select ul.options.overflowing {
+    top: auto;
+    bottom: 40px;
+    transition: opacity 200ms ease-out, bottom 200ms ease-out, visibility 200ms ease-out;
+    -webkit-transition: opacity 200ms ease-out, bottom 200ms ease-out, visibility 200ms ease-out;
+    -moz-transition: opacity 200ms ease-out, bottom 200ms ease-out, visibility 200ms ease-out;
+    -ms-transition: opacity 200ms ease-out, bottom 200ms ease-out, visibility 200ms ease-out;
+    -o-transition: opacity 200ms ease-out, bottom 200ms ease-out, visibility 200ms ease-out;
+}
+
+div.fancy-select ul.options.overflowing.open {
+    top: auto;
+    bottom: 50px;
+    transition: opacity 200ms ease-out, bottom 200ms ease-out;
+    -webkit-transition: opacity 200ms ease-out, bottom 200ms ease-out;
+    -moz-transition: opacity 200ms ease-out, bottom 200ms ease-out;
+    -ms-transition: opacity 200ms ease-out, bottom 200ms ease-out;
+    -o-transition: opacity 200ms ease-out, bottom 200ms ease-out;
+}
+
+div.fancy-select ul.options li {
+    padding: 3px 0 3px 6px;
+    margin: 0;
+    background: #fff;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 150ms ease-out;
+    -webkit-transition: all 150ms ease-out;
+    -moz-transition: all 150ms ease-out;
+    -ms-transition: all 150ms ease-out;
+    -o-transition: all 150ms ease-out;
+}
+
+div.fancy-select ul.options li.selected {
+    background: rgb(246, 246, 246);
+}
+
+div.fancy-select ul.options li.hover {
+    background: rgb(242, 242, 242);
+}
+
+/* option container */
+.cbp-single-option-container {
+    margin: 12px auto;
+}
+
+.cbp-single-option-container:last-of-type {
+    margin: 12px auto 0px auto;
+}
+
+/* labels */
+#cb-parallax-meta-box label {
+    pointer-events: none;
+}
+
+/* The swich - since it is inside a label element. */
+#cb-parallax-meta-box .cbp-switch {
+    pointer-events: initial;
+}

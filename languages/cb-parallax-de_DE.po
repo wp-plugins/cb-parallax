@@ -1,0 +1,372 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Custom Backgrounds\n"
+"POT-Creation-Date: 2015-08-21 20:29+0100\n"
+"PO-Revision-Date: 2015-08-21 20:29+0100\n"
+"Last-Translator: Demis Patti <dpatti@gmx.ch>\n"
+"Language-Team:  <demis@demispatti.ch>\n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.7.3\n"
+"X-Poedit-KeywordsList: _e;__;esc_attr_e;esc_attr__;esc_html_e;esc_html__;_n;"
+"_x;_x:1,2c;_n:1,2\n"
+"X-Poedit-Basepath: ../\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: admin/class-cb-parallax-admin.php:337
+msgid "Plugin support"
+msgstr "Plugin Support"
+
+#: admin/class-cb-parallax-admin.php:338
+msgid "Rate plugin"
+msgstr "Plugin bewerten"
+
+#: admin/class-cb-parallax-admin.php:339
+msgid "Donate"
+msgstr "Spenden"
+
+#: admin/includes/class-cb-parallax-admin-localisation.php:137
+#: admin/includes/class-cb-parallax-admin-localisation.php:139
+#: admin/includes/class-cb-parallax-admin-localisation.php:145
+#: admin/includes/class-cb-parallax-custom-background.php:171
+#: admin/includes/class-cb-parallax-meta-box.php:112
+#: public/includes/class-cb-parallax-public-localisation.php:148
+msgid "vertical"
+msgstr "vertikal"
+
+#: admin/includes/class-cb-parallax-admin-localisation.php:142
+#: admin/includes/class-cb-parallax-admin-localisation.php:146
+#: admin/includes/class-cb-parallax-custom-background.php:172
+#: admin/includes/class-cb-parallax-meta-box.php:113
+#: public/includes/class-cb-parallax-public-localisation.php:149
+msgid "horizontal"
+msgstr "horizontal"
+
+#: admin/includes/class-cb-parallax-admin-localisation.php:188
+#: admin/includes/class-cb-parallax-meta-box.php:318
+msgid "Background Color"
+msgstr "Hintergrundfarbe"
+
+#: admin/includes/class-cb-parallax-admin-localisation.php:240
+msgid "Set Background Image"
+msgstr "Eigenes Hintergrundbild"
+
+#: admin/includes/class-cb-parallax-admin-localisation.php:241
+#: admin/includes/class-cb-parallax-meta-box.php:333
+msgid "Set background image"
+msgstr "Hintergrundbild wählen"
+
+#: admin/includes/class-cb-parallax-custom-background.php:132
+msgid "no repeat"
+msgstr "no repeat"
+
+#: admin/includes/class-cb-parallax-custom-background.php:133
+#: admin/includes/class-cb-parallax-meta-box.php:100
+#: public/includes/class-cb-parallax-public-localisation.php:136
+msgid "repeat"
+msgstr "repeat"
+
+#: admin/includes/class-cb-parallax-custom-background.php:134
+#: admin/includes/class-cb-parallax-meta-box.php:101
+#: public/includes/class-cb-parallax-public-localisation.php:137
+msgid "repeat horizontally"
+msgstr "repeat horizontal"
+
+#: admin/includes/class-cb-parallax-custom-background.php:135
+#: admin/includes/class-cb-parallax-meta-box.php:102
+#: public/includes/class-cb-parallax-public-localisation.php:138
+msgid "repeat vertically"
+msgstr "repeat vertikal"
+
+#: admin/includes/class-cb-parallax-custom-background.php:140
+#: admin/includes/class-cb-parallax-custom-background.php:181
+#: admin/includes/class-cb-parallax-meta-box.php:82
+#: admin/includes/class-cb-parallax-meta-box.php:127
+#: public/includes/class-cb-parallax-public-localisation.php:118
+#: public/includes/class-cb-parallax-public-localisation.php:163
+msgid "left"
+msgstr "links"
+
+#: admin/includes/class-cb-parallax-custom-background.php:141
+#: admin/includes/class-cb-parallax-custom-background.php:182
+#: admin/includes/class-cb-parallax-meta-box.php:84
+#: admin/includes/class-cb-parallax-meta-box.php:129
+#: public/includes/class-cb-parallax-public-localisation.php:120
+#: public/includes/class-cb-parallax-public-localisation.php:165
+msgid "right"
+msgstr "rechts"
+
+#: admin/includes/class-cb-parallax-custom-background.php:142
+#: admin/includes/class-cb-parallax-custom-background.php:149
+#: admin/includes/class-cb-parallax-meta-box.php:83
+#: admin/includes/class-cb-parallax-meta-box.php:89
+#: admin/includes/class-cb-parallax-meta-box.php:128
+#: admin/includes/class-cb-parallax-meta-box.php:134
+#: public/includes/class-cb-parallax-public-localisation.php:119
+#: public/includes/class-cb-parallax-public-localisation.php:125
+#: public/includes/class-cb-parallax-public-localisation.php:164
+#: public/includes/class-cb-parallax-public-localisation.php:170
+msgid "center"
+msgstr "mittig"
+
+#: admin/includes/class-cb-parallax-custom-background.php:147
+#: admin/includes/class-cb-parallax-custom-background.php:176
+#: admin/includes/class-cb-parallax-meta-box.php:88
+#: admin/includes/class-cb-parallax-meta-box.php:133
+#: public/includes/class-cb-parallax-public-localisation.php:124
+#: public/includes/class-cb-parallax-public-localisation.php:169
+msgid "top"
+msgstr "oben"
+
+#: admin/includes/class-cb-parallax-custom-background.php:148
+#: admin/includes/class-cb-parallax-custom-background.php:177
+#: admin/includes/class-cb-parallax-meta-box.php:90
+#: admin/includes/class-cb-parallax-meta-box.php:135
+#: public/includes/class-cb-parallax-public-localisation.php:126
+#: public/includes/class-cb-parallax-public-localisation.php:171
+msgid "bottom"
+msgstr "unten"
+
+#: admin/includes/class-cb-parallax-custom-background.php:154
+#: admin/includes/class-cb-parallax-meta-box.php:95
+#: public/includes/class-cb-parallax-public-localisation.php:131
+msgid "scroll"
+msgstr "scroll"
+
+#: admin/includes/class-cb-parallax-custom-background.php:155
+#: admin/includes/class-cb-parallax-meta-box.php:94
+#: public/includes/class-cb-parallax-public-localisation.php:130
+msgid "fixed"
+msgstr "fixed"
+
+#: admin/includes/class-cb-parallax-custom-background.php:159
+msgid "auto"
+msgstr "auto"
+
+#: admin/includes/class-cb-parallax-custom-background.php:166
+msgid "background"
+msgstr "Hintergrund"
+
+#: admin/includes/class-cb-parallax-custom-background.php:167
+msgid "foreground"
+msgstr "Vordergrund"
+
+#: admin/includes/class-cb-parallax-help-tab.php:44
+msgid "HELP"
+msgstr "HILFE"
+
+#: admin/includes/class-cb-parallax-help-tab.php:44
+msgid "cbParallax help"
+msgstr "cbParallax Hilfe"
+
+#: admin/includes/class-cb-parallax-help-tab.php:103
+msgid ""
+"Play around with the options and let me know about any issues. Since this "
+"plugin needs the \"custom-background\"-feature to be supported by your "
+"theme, please make sure your theme does support that feature."
+msgstr ""
+"Sollten Probleme auftauchen, so lass es mich bitte wissen. Dieses Plugin "
+"basiert auf dem WordPress-eigenen \"custom-background\"-Feature. Stell bitte "
+"sicher, dass das Theme welches Du verwendest dieses Feature unterstützt."
+
+#: admin/includes/class-cb-parallax-help-tab.php:105
+msgid ""
+"This plugin enables you to have a fullscreen background image with a "
+"parallax effect with any image that meets the minimum dimensional "
+"requirements ( 1920 x 1200px for vertical parallax, wider for horizontal "
+"parallax). So it works vertically or horizontally, as a fixed background or "
+"scrolling with the content. Or not at all. That's all up to you."
+msgstr ""
+"Dieses Plugin ermöglicht es Dir, pro Seite, Post oder Produkt ein eigenes "
+"Hintergrundbild zu verwenden. Dies zusätzlich mit einem wahlweise vertikalen "
+"oder horizontalen Parallax-Effekt. Oder statisch. Oder mit dem Inhalt "
+"mitscrollend. Oder überhaupt nicht. Das liegt alles ganz allein bei Dir ;-)"
+
+#: admin/includes/class-cb-parallax-help-tab.php:107
+msgid ""
+"On parallaxed images, there's an option to set an overlay pattern as well as "
+"an option to customize the opacity of that overlay."
+msgstr ""
+"Bei der Anzeige von \"parallaxifizierten\" Bildern besteht zusätzlich die "
+"Möglichkeit, ein Muster darüber zu legen und dessen Transparenz zu "
+"beeinflussen."
+
+#: admin/includes/class-cb-parallax-help-tab.php:109
+msgid ""
+"For more help regarding 'cbParallax', you'll soon find a working link here. "
+"<a href='<!--http://url/-->' target='_blank'>soon</a>."
+msgstr ""
+"Für mehr Hilfethemen findest Du hier im Belde einen weiterführenden<a "
+"href='#' target='_blank'> link</a>."
+
+#: admin/includes/class-cb-parallax-help-tab.php:111
+msgid ""
+"The indicated directions are meant to be met while scrolling down the "
+"content."
+msgstr "Die Richtungsangaben gelten während hinunter gescrollt wird ;-)"
+
+#: admin/includes/class-cb-parallax-help-tab.php:113
+msgid "Enjoy!"
+msgstr "Enjoy!"
+
+#: admin/includes/class-cb-parallax-meta-box.php:99
+#: public/includes/class-cb-parallax-public-localisation.php:135
+msgid "no-repeat"
+msgstr "no-repeat"
+
+#: admin/includes/class-cb-parallax-meta-box.php:117
+#: public/includes/class-cb-parallax-public-localisation.php:153
+msgid "to top"
+msgstr "hoch"
+
+#: admin/includes/class-cb-parallax-meta-box.php:118
+#: public/includes/class-cb-parallax-public-localisation.php:154
+msgid "to bottom"
+msgstr "runter"
+
+#: admin/includes/class-cb-parallax-meta-box.php:122
+#: public/includes/class-cb-parallax-public-localisation.php:158
+msgid "to the left"
+msgstr "nach links"
+
+#: admin/includes/class-cb-parallax-meta-box.php:123
+#: public/includes/class-cb-parallax-public-localisation.php:159
+msgid "to the right"
+msgstr "nach rechts"
+
+#: admin/includes/class-cb-parallax-meta-box.php:139
+#: public/includes/class-cb-parallax-public-localisation.php:175
+msgid "none"
+msgstr "kein"
+
+#: admin/includes/class-cb-parallax-meta-box.php:152
+#: public/includes/class-cb-parallax-public-localisation.php:188
+msgid "default"
+msgstr "Standard"
+
+#: admin/includes/class-cb-parallax-meta-box.php:245
+msgid "cb Parallax"
+msgstr "cb Parallax"
+
+#: admin/includes/class-cb-parallax-meta-box.php:334
+msgid "Remove background image"
+msgstr "Hintergrundbild entfernen"
+
+#: admin/includes/class-cb-parallax-meta-box.php:340
+msgid "Parallax"
+msgstr "Parallax"
+
+#: admin/includes/class-cb-parallax-meta-box.php:354
+msgid "Repeat"
+msgstr "Repeat"
+
+#: admin/includes/class-cb-parallax-meta-box.php:363
+msgid "Vertical Position"
+msgstr "Vertikale Position"
+
+#: admin/includes/class-cb-parallax-meta-box.php:372
+msgid "Horizontal Position"
+msgstr "Horizontale Position"
+
+#: admin/includes/class-cb-parallax-meta-box.php:381
+msgid "Attachment"
+msgstr "Background-Attachment"
+
+#: admin/includes/class-cb-parallax-meta-box.php:395
+msgid "Mode"
+msgstr "Modus"
+
+#: admin/includes/class-cb-parallax-meta-box.php:404
+#: admin/includes/class-cb-parallax-meta-box.php:413
+msgid "Scroll Direction"
+msgstr "Scrollrichtung"
+
+#: admin/includes/class-cb-parallax-meta-box.php:422
+#: admin/includes/class-cb-parallax-meta-box.php:432
+msgid "Alignment"
+msgstr "Ausrichtung"
+
+#: admin/includes/class-cb-parallax-meta-box.php:442
+msgid "Overlay"
+msgstr "Overlay"
+
+#: admin/includes/class-cb-parallax-meta-box.php:451
+msgid "Overlay Opacity"
+msgstr "Opazität des Overlays"
+
+#~ msgid ""
+#~ "For help regarding 'cbParallax', please refer to the <a href='<!--http://"
+#~ "url/-->' target='_blank'>plugin website</a>."
+#~ msgstr ""
+#~ "Hilfe finden Sie bald unter<a href='<!--http://url/-->' "
+#~ "target='_blank'>plugin website</a>."
+
+#~ msgid ""
+#~ "This plugin enables you to have a nice fullscreen background parallax "
+#~ "effect with any image that meets the minimum dimensional requirements. It "
+#~ "works horizontally or vertically. Or not at all. That's up to you."
+#~ msgstr ""
+#~ "Dieses Plugin ermöglicht es Dir, jede Seite, jedes Posting und jedes "
+#~ "Produkt mit einen hübschen Vollbild-Hintergrund mit einem horizontalen "
+#~ "oder vertikalen parallaxeffekt zu präsentieren. ....."
+
+#~ msgid ""
+#~ "Play around with the options and let me know about any issues. Since this "
+#~ "plugin needs the \"custom-background\"-feature to work, so please make "
+#~ "sure your theme supports that feature."
+#~ msgstr ""
+#~ "Viel Spass bei der Nutzung. Lasst mich wissen wenn es Probleme geben "
+#~ "sollte. Dieses Plugin baut auf dem WordPress-eigenen \"custom-background"
+#~ "\"-Feature auf. Stell bitte sicher, dass Dein Theme dieses Feature "
+#~ "unterstützt!"
+
+#~ msgid "Vertical Scroll Direction"
+#~ msgstr "Vertikale Scrollrichtung"
+
+#~ msgid "Horizontal Scroll Direction"
+#~ msgstr "Horizontale Scrollrichtung"
+
+#~ msgid "Horizontal Alignment"
+#~ msgstr "Horizontale Ausrichtung"
+
+#~ msgid "Vertical Alignment"
+#~ msgstr "Vertikale Ausrichtung"
+
+#~ msgid "Custom Background"
+#~ msgstr "Benutzerdefinierter Hintergrund"
+
+#~ msgid "No Repeat"
+#~ msgstr "No-Repeat"
+
+#~ msgid "Repeat Horizontally"
+#~ msgstr "Horizontal wiederholen"
+
+#~ msgid "Repeat Vertically"
+#~ msgstr "Vertikal wiederholen"
+
+#~ msgid "Left"
+#~ msgstr "links"
+
+#~ msgid "Right"
+#~ msgstr "rechts"
+
+#~ msgid "Center"
+#~ msgstr "zentriert"
+
+#~ msgid "Top"
+#~ msgstr "oben"
+
+#~ msgid "Bottom"
+#~ msgstr "unten"
+
+#~ msgid "Scroll"
+#~ msgstr "scrollen"
+
+#~ msgid "Fixed"
+#~ msgstr "fixiert"
+
+#~ msgid "Color"
+#~ msgstr "Farbe"
