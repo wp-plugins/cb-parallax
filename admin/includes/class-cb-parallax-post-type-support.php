@@ -14,67 +14,68 @@
  */
 class cb_parallax_post_type_support {
 
-	/**
-	 * The available post types.
-	 *
-	 * @since    0.1.0
-	 * @access   private
-	 * @var      array $post_types
-	 */
-	private $post_types = array( 'post', 'page', 'product' );
+    /**
+     * The available post types.
+     *
+     * @since    0.1.0
+     * @access   private
+     * @var      array $post_types
+     */
+    private $post_types = array( 'post', 'page', 'product' );
 
-	/**
-	 * The feature we want the post types to work with.
-	 *
-	 * @since    0.1.0
-	 * @access   private
-	 * @var      string $feature
-	 */
-	private $feature = 'custom-background';
+    /**
+     * The feature we want the post types to work with.
+     *
+     * @since    0.1.0
+     * @access   private
+     * @var      string $feature
+     */
+    private $feature = 'custom-background';
 
-	/**
-	 * The array holding a set of default values for the custom background feature.
-	 *
-	 * @since    0.1.0
-	 * @access   private
-	 * @var      array $defaults
-	 */
-	private $defaults;
+    /**
+     * The array holding a set of default values for the custom background feature.
+     *
+     * @since    0.1.0
+     * @access   private
+     * @var      array $defaults
+     */
+    private $defaults;
 
-	private function set_defaults() {
+    private function set_defaults() {
 
-		$this->defaults = array(
-			'default-color'          => '',
-			'default-image'          => '',
-			'wp-head-callback'       => '_custom_background_cb',
-			'admin-head-callback'    => '',
-			'admin-preview-callback' => ''
-		);
-	}
+        $this->defaults = array(
+            'default-color' => '',
+            'default-image' => '',
+            'wp-head-callback' => '_custom_background_cb',
+            'admin-head-callback' => '',
+            'admin-preview-callback' => ''
+        );
+    }
 
-	/**
-	 * @since    0.1.0
-	 * @access   public
-	 * @return   mixed | void
-	 */
-	public function __construct() {
+    /**
+     * @since    0.1.0
+     * @access   public
+     * @return   mixed | void
+     */
+    public function __construct() {
 
-		$this->set_defaults();
-	}
+        $this->set_defaults();
+    }
 
-	/**
-	 * Add post type support for the given post types with the defined feature.
-	 *
-	 * @since    0.1.0
-	 * @access   public
-	 * @return   void
-	 */
-	public function add_post_type_support() {
+    /**
+     * Add post type support for the given post types with the defined feature.
+     *
+     * @since    0.1.0
+     * @access   public
+     * @return   void
+     */
+    public function add_post_type_support() {
 
-		foreach ( $this->post_types as $post_type ) {
+        foreach( $this->post_types as $post_type ) {
 
-			add_post_type_support( $post_type, $this->feature );
-		}
-	}
+            add_post_type_support($post_type, $this->feature);
+        }
+    }
+
 
 }

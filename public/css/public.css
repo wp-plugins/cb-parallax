@@ -43,6 +43,6 @@ body,
 #cbp_image_container {
     position: fixed;
     background: no-repeat fixed;
-    overflow : hidden;
+    overflow: hidden;
     z-index: -2;
 }

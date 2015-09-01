@@ -11,27 +11,29 @@
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  */
 
-(function ( $ ){
+(function ($) {
     "use strict";
 
-    // requestAnimationFrame polyfill by Erik Möller. fixes from Paul Irish and Tino Zijdel
-    // http://paulirish.com/2011/requestanimationframe-for-smart-animating/
-    // http://my.opera.com/emoller/blog/2011/12/20/requestanimationframe-for-smart-er-animating
-    // MIT license
-    (function (){
+    /**
+     * requestAnimationFrame polyfill by Erik Möller. fixes from Paul Irish and Tino Zijdel
+     http://paulirish.com/2011/requestanimationframe-for-smart-animating/
+     http://my.opera.com/emoller/blog/2011/12/20/requestanimationframe-for-smart-er-animating
+     MIT license
+     */
+    (function () {
         var lastTime = 0;
         var vendors = ['ms', 'moz', 'webkit', 'o'];
-        for (var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x){
+        for (var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
             window.requestAnimationFrame = window[vendors[x] + 'RequestAnimationFrame'];
             window.cancelAnimationFrame = window[vendors[x] + 'CancelAnimationFrame']
                 || window[vendors[x] + 'CancelRequestAnimationFrame'];
         }
 
         if (!window.requestAnimationFrame)
-            window.requestAnimationFrame = function ( callback, element ){
+            window.requestAnimationFrame = function (callback, element) {
                 var currTime = new Date().getTime();
                 var timeToCall = Math.max(0, 16 - (currTime - lastTime));
-                var id = window.setTimeout(function (){
+                var id = window.setTimeout(function () {
                         callback(currTime + timeToCall);
                     },
                     timeToCall);
@@ -40,12 +42,18 @@
             };
 
         if (!window.cancelAnimationFrame)
-            window.cancelAnimationFrame = function ( id ){
+            window.cancelAnimationFrame = function (id) {
                 clearTimeout(id);
             };
     }());
 
     var defaultOptions = {
+        imageSrc: '',
+        backgroundColor: '',
+        positionX: 'center',
+        positionY: 'center',
+        backgroundAttachment: 'fixed',
+
         parallaxPossible: false,
         parallaxEnabled: false,
         direction: 'vertical',
@@ -54,7 +62,6 @@
         horizontalAlignment: 'center',
         verticalAlignment: 'center',
         overlayImage: 'none',
-        imageSrc: '',
         imageWidth: $(window).innerWidth(),
         imageHeight: $(window).innerHeight(),
         overlayPath: '',
@@ -71,10 +78,17 @@
         verticalAlignment: cbParallax.verticalAlignment != 'undefined' ? cbParallax.verticalAlignment : defaultOptions.verticalAlignment
     };
 
+    var scrolling = {preserved: cbParallax.preserveScrolling != 'undefined' ? cbParallax.preserveScrolling : false};
+
     var image = {
         src: cbParallax.imageSrc != 'undefined' ? cbParallax.imageSrc : defaultOptions.imageSrc,
+        backgroundColor: cbParallax.backgroundColor != 'undefined' ? cbParallax.backgroundColor : defaultOptions.backgroundColor,
+        positionX: cbParallax.position_x != 'undefined' ? cbParallax.position_x : defaultOptions.positionX,
+        positionY: cbParallax.position_y != 'undefined' ? cbParallax.position_y : defaultOptions.positionX,
+        backgroundAttachment: cbParallax.backgroundAttachment != 'undefined' ? cbParallax.backgroundAttachment : defaultOptions.backgroundAttachment,
+
         width: cbParallax.imageWidth != 'undefined' ? cbParallax.imageWidth : defaultOptions.imageWidth,
-        height: cbParallax.imageHeight != 'undefined' ? cbParallax.imageHeight : defaultOptions.imageHeight
+        height: cbParallax.imageHeight != 'undefined' ? cbParallax.imageHeight : defaultOptions.imageHeight,
     };
 
     var overlay = {
@@ -104,21 +118,19 @@
 
     var niceScrollConfig = {
         zindex: -9999,
-        scrollspeed: 72,
-        mousescrollstep: 8 * 4,
+        scrollspeed: 120,
+        mousescrollstep: 8 * 3,
         preservenativescrolling: true,
         horizrailenabled: false,
-        directionlockdeadzone: 6,
-        nativeparentscrolling: true,
         cursordragspeed: 1.2
     };
 
     // Converts alignments such as left, center and right into pixel values.
-    function getHorizontalAlignAsPosition (){
+    function getHorizontalAlignAsPosition() {
 
         var horizontalPosition = null;
 
-        switch (parallax.horizontalAlignment){
+        switch (parallax.horizontalAlignment) {
 
             case 'left':
                 horizontalPosition = '0';
@@ -137,11 +149,11 @@
     }
 
     // Converts alignments such as top, center and bottom into pixel values.
-    function getVerticalAlignAsPosition (){
+    function getVerticalAlignAsPosition() {
 
         var verticalPosition = null;
 
-        switch (parallax.verticalAlignment){
+        switch (parallax.verticalAlignment) {
 
             case 'top':
                 verticalPosition = '0';
@@ -160,30 +172,31 @@
     }
 
     // Calculates the scroll ratio depending on the viewport size, the image size, the shifting-direction and the scroll direction.
-    function getScrollRatio (){
+    function getScrollRatio() {
 
         var verticalDocumentOffset = null;
         var verticalImageOffset = null;
         var horizontalImageOffset = null;
         var ratio = null;
 
-        if (parallax.direction == 'vertical'){
-
+        if (parallax.direction == 'vertical') {
             verticalDocumentOffset = body.innerHeight() - $(window).innerHeight();
             verticalImageOffset = image.height - $(window).innerHeight();
-            ratio = verticalDocumentOffset > verticalImageOffset ? (verticalImageOffset / verticalDocumentOffset) : (verticalDocumentOffset / verticalImageOffset);
-        } else if (parallax.direction == 'horizontal'){
 
+            ratio = (verticalImageOffset / verticalDocumentOffset);
+
+        } else if (parallax.direction == 'horizontal') {
             verticalDocumentOffset = body.innerHeight() - $(window).innerHeight();
             horizontalImageOffset = image.width - $(window).innerWidth();
-            ratio = verticalDocumentOffset > horizontalImageOffset ? (horizontalImageOffset / verticalDocumentOffset) : (verticalDocumentOffset / horizontalImageOffset);
+
+            ratio = (horizontalImageOffset / verticalDocumentOffset);
         }
 
         return ratio;
     }
 
     // Calculates and returns the x and y values for the transformation.
-    function getTransform (){
+    function getTransform() {
 
         var transform = {
             x: null,
@@ -195,21 +208,21 @@
         // Determines the values for the transformation.
         if (parallax.direction == 'vertical') {
 
-            if (parallax.verticalScrollDirection == 'to top'){
+            if (parallax.verticalScrollDirection == 'to top') {
                 transform.x = 0;
                 transform.y = -scrolling * ratio;
 
-            } else if (parallax.verticalScrollDirection == 'to bottom'){
+            } else if (parallax.verticalScrollDirection == 'to bottom') {
                 transform.x = 0;
                 transform.y = scrolling * ratio;
             }
-        } else if (parallax.direction == 'horizontal'){
+        } else if (parallax.direction == 'horizontal') {
 
-            if (parallax.horizontalScrollDirection == 'to the left'){
+            if (parallax.horizontalScrollDirection == 'to the left') {
                 transform.x = -scrolling * ratio;
                 transform.y = 0;
 
-            } else if (parallax.horizontalScrollDirection == 'to the right'){
+            } else if (parallax.horizontalScrollDirection == 'to the right') {
                 transform.x = scrolling * ratio;
                 transform.y = 0;
             }
@@ -219,9 +232,9 @@
     }
 
     // Creates a container and assigns the overlay image and its opacity, if an overlay pattern is set.
-    function setOverlay (){
+    function setOverlay() {
 
-        if (overlay.image != "none"){
+        if (overlay.image != "none") {
 
             body.prepend('<div id="cbp_overlay"></div>');
             overlayContainer = $('#cbp_overlay');
@@ -234,7 +247,7 @@
     }
 
     // Set style.
-    function setStyle (){
+    function setStyle() {
 
         // Removes the custom background class and the background image.
         body.removeClass('custom-background');
@@ -249,40 +262,39 @@
     }
 
     // Sets the initial background position.
-    function setInitialPosition (){
+    function setInitialPosition() {
 
-        if (parallax.direction == 'vertical'){
-
+        if (parallax.direction == 'vertical') {
             imageContainer.css({
                 'left': getHorizontalAlignAsPosition()
             });
 
-            if (parallax.verticalScrollDirection == 'to top'){
+            if (parallax.verticalScrollDirection == 'to top') {
 
                 imageContainer.css({
                     'top': 0
                 });
 
-            } else if (parallax.verticalScrollDirection == 'to bottom'){
+            } else if (parallax.verticalScrollDirection == 'to bottom') {
 
                 imageContainer.css({
                     'bottom': 0
                 });
             }
 
-        } else if (parallax.direction == 'horizontal'){
+        } else if (parallax.direction == 'horizontal') {
 
             imageContainer.css({
                 'top': getVerticalAlignAsPosition()
             });
 
-            if (parallax.horizontalScrollDirection == 'to the left'){
+            if (parallax.horizontalScrollDirection == 'to the left') {
 
                 imageContainer.css({
                     'left': 0
                 });
 
-            } else if (parallax.horizontalScrollDirection == 'to the right'){
+            } else if (parallax.horizontalScrollDirection == 'to the right') {
 
                 imageContainer.css({
                     'right': 0
@@ -292,9 +304,9 @@
     }
 
     // While scrolling.
-    function animationLoop (){
+    function animationLoop() {
 
-        if (isScrolling){
+        if (isScrolling) {
 
             var transform = getTransform();
             setTranslate3DTransform(transform);
@@ -305,19 +317,19 @@
     }
 
     // Keeps the image centered and positioned on window resize.
-    function keepImageCentered (){
+    function keepImageCentered() {
 
         if (isResizing) {
 
             var horizontal_align = getHorizontalAlignAsPosition();
             var vertical_align = getVerticalAlignAsPosition();
 
-            if (parallax.direction == 'vertical' && parallax.horizontalAlignment == 'center'){
+            if (parallax.direction == 'vertical' && parallax.horizontalAlignment == 'center') {
 
                 imageContainer.css({
                     'left': horizontal_align
                 });
-            } else if (parallax.direction == 'horizontal' && parallax.verticalAlignment == 'center'){
+            } else if (parallax.direction == 'horizontal' && parallax.verticalAlignment == 'center') {
 
                 imageContainer.css({
                     'top': vertical_align
@@ -327,9 +339,9 @@
     }
 
     // Animation loop on window resize.
-    function animationLoopOnResize(){
+    function animationLoopOnResize() {
 
-        if (isResizing){
+        if (isResizing) {
 
             keepImageCentered();
             var transform = getTransform();
@@ -341,9 +353,10 @@
     }
 
     // Transformation function for repositioning the canvas.
-    function setTranslate3DTransform ( transform ){
+    function setTranslate3DTransform(transform) {
 
-        imageContainer.css({
+        /*imageContainer*/
+        $('#' + id).css({
             '-webkit-transform': 'translate3d(' + transform.x + 'px, ' + transform.y + 'px, 0px)',
             '-moz-transform': 'translate3d(' + transform.x + 'px, ' + transform.y + 'px, 0px)',
             '-ms-transform': 'translate3d(' + transform.x + 'px, ' + transform.y + 'px, 0px)',
@@ -353,10 +366,10 @@
     }
 
 
-    $(document).ready(function (){
+    $(document).ready(function () {
 
         // Creates the image container.
-        function createImageContainer ( id ){
+        function createImageContainer(id) {
 
             body.prepend('<canvas id="' + id + '" class="custom-background" width="' + image.width + '" height="' + image.height + '"><canvas>');
             imageContainer = $('#' + id);
@@ -367,42 +380,47 @@
         // Caches the image container object.
         imageContainer = createImageContainer(id);
 
-        // This function fires after the background image has been drawn onto the canvas.
-        function init (){
+        function preserveScrolling() {
 
-            // If there is no Nicescroll library detected, we load the modified version.
-            if ($('#ascrail2000').length == 0){
+            // Instanciates Nicescroll.
+            var nice = html.niceScroll(niceScrollConfig);
 
-                // Instanciates Nicescroll.
-                var nice = html.niceScroll(niceScrollConfig);
+            // Hides the rail and the scrollbar.
+            nice.hide();
 
-                // Hides the rail and the scrollbar.
-                nice.hide();
+            // Forces display of the default scrollbar in IE.
+            body.css('-ms-overflow-style', 'scrollbar');
+        }
 
-                // Forces display of the default scrollbar in IE.
-                body.css('-ms-overflow-style', 'scrollbar');
+        // If parallax is possible and enabled, this function fires after the background image has been drawn onto the canvas.
+        function init() {
+
+            // Since we use a modified version of Nicescroll, we perform this check here: If there is no "default" Nicescroll library detected, we load the modified version.
+            if ($('#ascrail2000').length == 0) {
+
+                preserveScrolling();
             }
 
             setOverlay();
             setStyle();
             setInitialPosition();
 
-            // We call this one once from here so everything is Radiohead, "Everything in its right place".
+            // We call this one once from here so everything is Radiohead, Everything in its right place.
             var transform = getTransform();
             setTranslate3DTransform(transform);
         }
 
         // Kicks off the script if...
-        if (parallax.possible && parallax.enabled){
+        if (parallax.possible && parallax.enabled) {
 
-            // This is the routine that sets the context, creates the new image and then draws the image onto the canvas.
-            window.onload = function (){
+            // This is the routine that sets the context, creates the new image and then draws the assigned background image onto the canvas.
+            window.onload = function () {
 
                 var canvas = document.getElementById(id);
                 var context = canvas.getContext('2d');
                 var img = new Image();
 
-                img.onload = function (){
+                img.onload = function () {
 
                     context.drawImage(img, 0, 0, image.width, image.height);
 
@@ -411,20 +429,33 @@
 
                 img.src = image.src;
             }
+            // ...else if scrolling is preserved, we load the modified Nicescroll library.
+        } else if (scrolling.preserved) {
+
+            preserveScrolling();
         }
 
     });
 
 
-    $(window).on('scroll', function (){
-        isScrolling = true;
-        requestAnimationFrame(animationLoop);
+    $(window).on('scroll', function () {
+
+        if (parallax.possible && parallax.enabled) {
+
+            isScrolling = true;
+            requestAnimationFrame(animationLoop);
+        }
     });
 
 
-    $(window).on('resize', function (){
-        isResizing = true;
-        requestAnimationFrame(animationLoopOnResize);
+    $(window).on('resize', function () {
+
+        if (parallax.possible && parallax.enabled) {
+
+            isResizing = true;
+            requestAnimationFrame(animationLoopOnResize);
+        }
+
     });
 
 })(jQuery);

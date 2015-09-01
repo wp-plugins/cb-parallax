@@ -2,10 +2,10 @@
 
 Tags: image, background, fullscreen, parallax, Hintergrund, Bild, Hintergrundbild
 
-Requires at least: 3.8<br />
+Requires at least: 3.9<br />
 Tested up to: 4.3<br />
-Stable tag: 0.2.0<br />
-Version: 0.2.0<br />
+Stable tag: 0.2.1<br />
+Version: 0.2.1<br />
 Contributors: demispatti<br />
 License: GPLv2 or later<br />
 License URI: http://www.gnu.org/licenses/gpl-2.0.html<br />
@@ -88,11 +88,11 @@ If you're a theme author, consider adding support for this if you can make it fi
 
 #### Are there any incompatibility problems, limitations or known issues? ####
 
-No. If you encounter any problem, a feedback would be welcome in order to locate the issue.<br />
+Since the background image container wraps the body element, it usually resembles the viewport dimensions. This means, that on themes where the navigation bar is on the side, the sidebar covers a part of the viewport and thus also a part of the image.<br />
 
 #### Can you help me? ####
 
-Unfortunately, I cannot provide free support for this plugin. I honestly wish I could. However, very soon you can go <a href="#" target="_blank">here</a> for further informations.<br />
+Unfortunately, I cannot provide free support for this plugin. I honestly wish I could. However, very soon you will find a link for further informations.<br />
 
 ## Screenshots ##
 
@@ -101,6 +101,15 @@ Unfortunately, I cannot provide free support for this plugin. I honestly wish I 
 3. Custom background meta box.<br />
 
 ## Changelog ##
+
+#### Version 0.2.1 ####
+
+1. Resolved the translation bugs
+2. Optimized the scrolling behaviour
+3. Corrected the scroll ratio calculation
+4. Corrected the "static" background image display
+5. Corrected the meta box display behaviour
+6. Added the option to preserve the nice scrolling behaviour without the need to use the parallax feature ( see "Settings / General / cbParallax" ).
 
 #### Version 0.2.0 ####
 
