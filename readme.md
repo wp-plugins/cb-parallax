@@ -1,22 +1,22 @@
-# cbParallax #
+## cbParallax ##
 
 Tags: image, background, fullscreen, parallax, Hintergrund, Bild, Hintergrundbild
 
-Requires at least: 3.9<br />
-Tested up to: 4.3<br />
-Stable tag: 0.2.1<br />
-Version: 0.2.1<br />
-Contributors: demispatti<br />
-License: GPLv2 or later<br />
-License URI: http://www.gnu.org/licenses/gpl-2.0.html<br />
+Requires at least: 3.9  
+Tested up to: 4.3  
+Stable tag: 0.2.1  
+Version: 0.2.1  
+Contributors: demispatti  
+License: GPLv2 or later  
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-This plugin allows you to customize single pages, posts and products with an individual, optionally parallaxing fullscreen background image.<br />
+This plugin allows you to customize single pages, posts and products with an individual, optionally parallaxing fullscreen background image.
 
-## Description ##
+### Description ###
 
-This plugin enables you to set a custom background image.  It supports vertical and horizontal parallax scrolling effect, as long as the image dimensions exceed the viewport dimensions.  Be aware that the image is never being resized, just moved around, so keep that in mind.  You can align the image on either side parallel to the parallax direction or centered. The offset defines the area for the parallax effect.  You can also choose from a couple of overlays if you like to.<br />
+This plugin enables you to set a custom background image.  It supports vertical and horizontal parallax scrolling effect, as long as the image dimensions exceed the viewport dimensions.  Be aware that the image is never being resized, just moved around, so keep that in mind.  You can align the image on either side parallel to the parallax direction or centered. The offset defines the area for the parallax effect.  You can also choose from a couple of overlays if you like to.
 
-## Features ##
+### Features ###
 
 - Custom background image
 - Compatible with posts, pages and products
@@ -25,27 +25,27 @@ This plugin enables you to set a custom background image.  It supports vertical 
 - Supports and is supported by Nicescroll
 - Various overlays to choose from
 
-This plugin works with recent versions of Chrome, Firefox, Internet Explorer, Opera and Safari (not the Windows Version tough).<br />
+This plugin works with recent versions of Chrome, Firefox, Internet Explorer, Opera and Safari (not the Windows Version tough).
 
-## Requirements ##
+### Requirements ###
 
-Your theme must support the core WordPress implementation of the [Custom Backgrounds](http://codex.wordpress.org/Custom_Backgrounds) theme feature.<br />
+Your theme must support the core WordPress implementation of the [Custom Backgrounds](http://codex.wordpress.org/Custom_Backgrounds) theme feature.
 
-In order to use the parallax feature, I decided to set the minimum required image dimensions to 1920px * 1200px, so that covers a fullHD screen with a slight vertical parallax movement ( Image height - viewport height, so 1200px - 1080px gives 120px offset to move the image. I hope you get the point here.) So choose image size according to the expected device resolution.<br />
+In order to use the parallax feature, I decided to set the minimum required image dimensions to 1920px * 1200px, so that covers a fullHD screen with a slight vertical parallax movement ( Image height - viewport height, so 1200px - 1080px gives 120px offset to move the image. I hope you get the point here.) So choose image size according to the expected device resolution.
 
 Your theme's display must be "boxed" somehow or an opacity should be added to the page content container.
 
-## Installation ##
+### Installation ###
 
 1. Upload the `cb-parallax` folder to your `/wp-content/plugins/` directory.
 2. Activate the "cbParallax" plugin through the "Plugins" menu in WordPress.
-3. Edit a post to add a custom background.<br />
+3. Edit a post to add a custom background.
 
-## Frequently Asked Questions ##
+### Frequently Asked Questions ###
 
 #### Where do I interact with this plugin? ####
 
-You will find the "cbParallax" meta box on edit screens for posts, pages and products.<br />
+You will find the "cbParallax" meta box on edit screens for posts, pages and products.
 
 #### How does it work? ####
 
@@ -57,26 +57,26 @@ Within the meta box, you could:
 4. Turn on the switch.
 5. Set the options below as you need.
 
-Save your work and visit the page :-)<br />
+Save your work and visit the page :-)
 
 #### What was that about "Nicescroll"? ####
 
-I really like Nicescroll. I like its scroll behaviour, its momentum-scroll, its easing,... smile. It is perfect for parallaxing.  So I implemented it for a smooth cross-browser scrolling experience. I modified it slightly, tough, to preserve the browser-specific default vertical scrollbar. If you bring your "own" Nicescroll library, which could be the case with other plugins or your theme, this mod will not be loaded. So there won't be any conflict regarding this popular library, preserving it's unique scrolling behaviour.<br />
+I really like Nicescroll. I like its scroll behaviour, its momentum-scroll, its easing,... smile. It is perfect for parallaxing.  So I implemented it for a smooth cross-browser scrolling experience. I modified it slightly, tough, to preserve the browser-specific default vertical scrollbar. If you bring your "own" Nicescroll library, which could be the case with other plugins or your theme, this mod will not be loaded. So there won't be any conflict regarding this popular library, preserving it's unique scrolling behaviour.
 
 #### Why doesn't it work with my theme? ####
 
-Most likely, this is because your theme doesn't support the WordPress `custom-background` theme feature.<br />
-This plugin requires that your theme utilize this theme feature to work properly.<br />
-Unfortunately, there's just no reliable way for the plugin to overwrite the background if the theme doesn't support this feature.<br />
-You'll need to check with your theme author to see if they'll add support or switch to a different theme.<br />
+Most likely, this is because your theme doesn't support the WordPress `custom-background` theme feature.
+This plugin requires that your theme utilize this theme feature to work properly.
+Unfortunately, there's just no reliable way for the plugin to overwrite the background if the theme doesn't support this feature.
+You'll need to check with your theme author to see if they'll add support or switch to a different theme.
 
 #### My theme supports 'custom-background' but it doesn't work! ####
 
-That's unlikely.<br />
-Just to make sure, check with your theme author and make sure that they support the WordPress `custom-background` theme feature.<br />
+That's unlikely.
+Just to make sure, check with your theme author and make sure that they support the WordPress `custom-background` theme feature.
 It can't be something custom your theme author created.  It must be the WordPress feature.
 
-Assuming your theme does support `custom-background` and this plugin still isn't working, your theme is most likely implementing the custom background feature incorrectly.  However, I'll be more than happy to take a look.<br />
+Assuming your theme does support `custom-background` and this plugin still isn't working, your theme is most likely implementing the custom background feature incorrectly.  However, I'll be more than happy to take a look.
 
 #### How do I add support for this in a theme? ####
 
@@ -88,19 +88,19 @@ If you're a theme author, consider adding support for this if you can make it fi
 
 #### Are there any incompatibility problems, limitations or known issues? ####
 
-Since the background image container wraps the body element, it usually resembles the viewport dimensions. This means, that on themes where the navigation bar is on the side, the sidebar covers a part of the viewport and thus also a part of the image.<br />
+Since the background image container wraps the body element, it usually resembles the viewport dimensions. This means, that on themes where the navigation bar is on the side, the sidebar covers a part of the viewport and thus also a part of the image.
 
 #### Can you help me? ####
 
-Unfortunately, I cannot provide free support for this plugin. I honestly wish I could. However, very soon you will find a link for further informations.<br />
+Unfortunately, I cannot provide free support for this plugin. I honestly wish I could. However, very soon you will find a link for further informations.
 
-## Screenshots ##
+### Screenshots ###
 
 1. Multiple background views of a single post.
 2. Custom background meta box on the edit post screen.
-3. Custom background meta box.<br />
+3. Custom background meta box.
 
-## Changelog ##
+### Changelog ###
 
 #### Version 0.2.1 ####
 
