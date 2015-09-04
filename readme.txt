@@ -1,22 +1,22 @@
-## cbParallax ##
+=== cbParallax ===
 
 Tags: image, background, fullscreen, parallax, Hintergrund, Bild, Hintergrundbild
 
-Requires at least: 3.9
-Tested up to: 4.3
-Stable tag: 0.2.1
-Version: 0.2.1
-Contributors: demispatti
-License: GPLv2 or later
+Requires at least: 3.9  
+Tested up to: 4.3  
+Stable tag: 0.2.1  
+Version: 0.2.1  
+Contributors: demispatti  
+License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 This plugin allows you to customize single pages, posts and products with an individual, optionally parallaxing fullscreen background image.
 
-### Description ###
+== Description ==
 
 This plugin enables you to set a custom background image.  It supports vertical and horizontal parallax scrolling effect, as long as the image dimensions exceed the viewport dimensions.  Be aware that the image is never being resized, just moved around, so keep that in mind.  You can align the image on either side parallel to the parallax direction or centered. The offset defines the area for the parallax effect.  You can also choose from a couple of overlays if you like to.
 
-### Features ###
+== Features ==
 
 - Custom background image
 - Compatible with posts, pages and products
@@ -27,7 +27,7 @@ This plugin enables you to set a custom background image.  It supports vertical 
 
 This plugin works with recent versions of Chrome, Firefox, Internet Explorer, Opera and Safari (not the Windows Version tough).
 
-### Requirements ###
+== Requirements ==
 
 Your theme must support the core WordPress implementation of the [Custom Backgrounds](http://codex.wordpress.org/Custom_Backgrounds) theme feature.
 
@@ -35,13 +35,13 @@ In order to use the parallax feature, I decided to set the minimum required imag
 
 Your theme's display must be "boxed" somehow or an opacity should be added to the page content container.
 
-### Installation ###
+== Installation ==
 
 1. Upload the `cb-parallax` folder to your `/wp-content/plugins/` directory.
 2. Activate the "cbParallax" plugin through the "Plugins" menu in WordPress.
 3. Edit a post to add a custom background.
 
-### Frequently Asked Questions ###
+== Frequently Asked Questions ==
 
 #### Where do I interact with this plugin? ####
 
@@ -94,13 +94,13 @@ Since the background image container wraps the body element, it usually resemble
 
 Unfortunately, I cannot provide free support for this plugin. I honestly wish I could. However, very soon you will find a link for further informations.
 
-### Screenshots ###
+== Screenshots ==
 
 1. Multiple background views of a single post.
 2. Custom background meta box on the edit post screen.
 3. Custom background meta box.
 
-### Changelog ###
+== Changelog ==
 
 #### Version 0.2.1 ####
 
