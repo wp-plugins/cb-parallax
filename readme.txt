@@ -43,11 +43,11 @@ Your theme's display must be "boxed" somehow or an opacity should be added to th
 
 == Frequently Asked Questions ==
 
-#### Where do I interact with this plugin? ####
+= Where do I interact with this plugin? =
 
 You will find the "cbParallax" meta box on edit screens for posts, pages and products.
 
-#### How does it work? ####
+= How does it work? =
 
 Within the meta box, you could:
 
@@ -59,18 +59,18 @@ Within the meta box, you could:
 
 Save your work and visit the page :-)
 
-#### What was that about "Nicescroll"? ####
+= What was that about "Nicescroll"? =
 
 I really like Nicescroll. I like its scroll behaviour, its momentum-scroll, its easing,... smile. It is perfect for parallaxing.  So I implemented it for a smooth cross-browser scrolling experience. I modified it slightly, tough, to preserve the browser-specific default vertical scrollbar. If you bring your "own" Nicescroll library, which could be the case with other plugins or your theme, this mod will not be loaded. So there won't be any conflict regarding this popular library, preserving it's unique scrolling behaviour.
 
-#### Why doesn't it work with my theme? ####
+= Why doesn't it work with my theme? =
 
 Most likely, this is because your theme doesn't support the WordPress `custom-background` theme feature.
 This plugin requires that your theme utilize this theme feature to work properly.
 Unfortunately, there's just no reliable way for the plugin to overwrite the background if the theme doesn't support this feature.
 You'll need to check with your theme author to see if they'll add support or switch to a different theme.
 
-#### My theme supports 'custom-background' but it doesn't work! ####
+= My theme supports 'custom-background' but it doesn't work! =
 
 That's unlikely.
 Just to make sure, check with your theme author and make sure that they support the WordPress `custom-background` theme feature.
@@ -78,7 +78,7 @@ It can't be something custom your theme author created.  It must be the WordPres
 
 Assuming your theme does support `custom-background` and this plugin still isn't working, your theme is most likely implementing the custom background feature incorrectly.  However, I'll be more than happy to take a look.
 
-#### How do I add support for this in a theme? ####
+= How do I add support for this in a theme? =
 
 Your theme must support the [Custom Backgrounds](http://codex.wordpress.org/Custom_Backgrounds) feature for this plugin to work.
 
@@ -86,11 +86,11 @@ If you're a theme author, consider adding support for this if you can make it fi
 
 	add_theme_support( 'custom-background' );
 
-#### Are there any incompatibility problems, limitations or known issues? ####
+= Are there any incompatibility problems, limitations or known issues? =
 
 Since the background image container wraps the body element, it usually resembles the viewport dimensions. This means, that on themes where the navigation bar is on the side, the sidebar covers a part of the viewport and thus also a part of the image.
 
-#### Can you help me? ####
+= Can you help me? =
 
 Unfortunately, I cannot provide free support for this plugin. I honestly wish I could. However, very soon you will find a link for further informations.
 
@@ -102,7 +102,7 @@ Unfortunately, I cannot provide free support for this plugin. I honestly wish I 
 
 == Changelog ==
 
-#### Version 0.2.1 ####
+= Version 0.2.1 =
 
 1. Resolved the translation bugs
 2. Optimized the scrolling behaviour
@@ -111,12 +111,12 @@ Unfortunately, I cannot provide free support for this plugin. I honestly wish I 
 5. Corrected the meta box display behaviour
 6. Added the option to preserve the nice scrolling behaviour without the need to use the parallax feature ( see "Settings / General / cbParallax" ).
 
-#### Version 0.2.0 ####
+= Version 0.2.0 =
 
 1. Optimized the script responsible for the parallax effect
 2. Added Nicescroll for smooth cross-browser scrolling
 
-#### Version 0.1.1 ####
+= Version 0.1.1 =
 
 1. Massively refactored the script responsible for the parallax effect
 2. Added the possibility to scroll the background image horizontally
@@ -125,6 +125,6 @@ Unfortunately, I cannot provide free support for this plugin. I honestly wish I 
 5. Improoved compatibility with webkit, opera and ie browsers
 6. Implemented a function that eases mousescroll
 
-#### Version 0.1.0 ####
+= Version 0.1.0 =
 
 * First release :-)
