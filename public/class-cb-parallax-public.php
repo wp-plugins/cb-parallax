@@ -92,7 +92,7 @@ class cb_parallax_public {
      */
     public function load_dependencies() {
 
-        require_once plugin_dir_path(dirname(__FILE__)) . "public/includes/class-cb-parallax-public-localisation.php";
+        require_once plugin_dir_path( dirname( __FILE__ ) ) . "public/includes/class-cb-parallax-public-localisation.php";
     }
 
     /**
@@ -108,7 +108,7 @@ class cb_parallax_public {
 
         wp_enqueue_style(
             $this->plugin_name . '-public-css',
-            plugin_dir_url(__FILE__) . 'css/public.css',
+            plugin_dir_url( __FILE__ ) . 'css/public.css',
             array(),
             $this->plugin_version,
             'all'
@@ -127,24 +127,24 @@ class cb_parallax_public {
     public function enqueue_scripts() {
 
         // Here we perform a check if any default Nicescroll library has been registered.
-        //$handle = 'jquery.nicescroll.js' || 'jquery.nicescroll.min.js';
         $handle = 'jquery.nicescroll.js' || 'jquery.nicescroll.min.js';
         $list = 'registered';
 
         // Retrieves the "parallax enabled" option set within the meta box.
-        $options = get_post_meta($GLOBALS['page_id'], $this->meta_key, true);
-        $parallax_enabled = $options['parallax_enabled'];
+        $post_meta = get_post_meta( get_the_ID()/*$GLOBALS['page_id']*/, $this->meta_key, true );
 
         // Checks for the "scrolling preserved" option.
-        $option = get_option($this->meta_key);
+        $scrolling_preserved = get_option( $this->meta_key, true );
+
+        $parallax_enabled = isset( $post_meta['parallax_enabled'] ) ? $post_meta['parallax_enabled'] : false;
 
         // If so, or if scrolling is not preserved, we do only load the script for the public part.
-        if( wp_script_is($handle, $list) || '' == $option && false === $parallax_enabled ) {
+        if( ( false === $parallax_enabled && false !== wp_script_is( $handle, $list ) ) || '1' != $scrolling_preserved ) {
 
             // Public part.
             wp_enqueue_script(
                 $this->plugin_name . '-public-js',
-                plugin_dir_url(__FILE__) . 'js/public.js',
+                plugin_dir_url( __FILE__ ) . 'js/public.js',
                 array( 'jquery' ),
                 $this->plugin_version,
                 true
@@ -155,7 +155,7 @@ class cb_parallax_public {
             // Nicescroll, modified version.
             wp_enqueue_script(
                 $this->plugin_name . '-cbp-nicescroll-min-js',
-                plugin_dir_url(__FILE__) . '../vendor/nicescroll/jquery.cbp.nicescroll.min.js',
+                plugin_dir_url( __FILE__ ) . '../vendor/nicescroll/jquery.cbp.nicescroll.min.js',
                 array( 'jquery' ),
                 $this->plugin_version,
                 true
@@ -164,7 +164,7 @@ class cb_parallax_public {
             // Public part.
             wp_enqueue_script(
                 $this->plugin_name . '-public-js',
-                plugin_dir_url(__FILE__) . 'js/public.js',
+                plugin_dir_url( __FILE__ ) . 'js/public.js',
                 array(
                     'jquery',
                     $this->plugin_name . '-cbp-nicescroll-min-js'
@@ -184,11 +184,11 @@ class cb_parallax_public {
      */
     private function define_public_localisation() {
 
-        $public_localisation = new cb_parallax_public_localisation($this->get_plugin_name(), $this->get_plugin_domain(), $this->get_plugin_version(), $this->get_meta_key());
+        $public_localisation = new cb_parallax_public_localisation( $this->get_plugin_name(), $this->get_plugin_domain(), $this->get_plugin_version(), $this->get_meta_key() );
 
-        $this->loader->add_action('wp_enqueue_scripts', $public_localisation, 'get_image_meta', 100);
-        $this->loader->add_action('template_redirect', $public_localisation, 'get_post_meta', 500);
-        $this->loader->add_action('wp_enqueue_scripts', $public_localisation, 'localize_public_area', 1000);
+        $this->loader->add_action( 'wp_enqueue_scripts', $public_localisation, 'get_image_meta', 100 );
+        $this->loader->add_action( 'template_redirect', $public_localisation, 'get_post_meta', 500 );
+        $this->loader->add_action( 'wp_enqueue_scripts', $public_localisation, 'localize_public_area', 1000 );
     }
 
     /**
