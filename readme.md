@@ -4,8 +4,8 @@ Tags: image, background, fullscreen, parallax, Hintergrund, Bild, Hintergrundbil
 
 Requires at least: 3.9  
 Tested up to: 4.3  
-Stable tag: 0.2.1  
-Version: 0.2.1  
+Stable tag: 0.2.2  
+Version: 0.2.2  
 Contributors: demispatti  
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -101,6 +101,10 @@ Unfortunately, I cannot provide free support for this plugin. I honestly wish I 
 3. Custom background meta box.
 
 == Changelog ==
+
+= Version 0.2.2 =
+
+1. Removed display errors.
 
 = Version 0.2.1 =
 

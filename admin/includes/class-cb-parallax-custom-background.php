@@ -245,7 +245,7 @@ class cb_parallax_custom_background {
         $wp_head_callback = get_theme_support('custom-background', 'wp-head-callback');
 
         // If the theme hasn't set up a custom callback, let's roll our own with a few extra options.
-        if( false === $wp_head_callback/*empty( $wp_head_callback )*/ || '_custom_background_cb' === $wp_head_callback ) {
+        if( false === $wp_head_callback || '_custom_background_cb' === $wp_head_callback ) {
 
             add_theme_support('custom-background', array( 'wp-head-callback' => array( &$this, 'echo_custom_background' ) ));
         }
@@ -282,6 +282,12 @@ class cb_parallax_custom_background {
 
         // Get the post meta.
         $post_meta = get_post_meta($post->ID, $this->meta_key, true);
+
+        // If there is no post meta stored yet, we bail.
+        if( false === $post_meta || '' === $post_meta ) {
+
+            return;
+        }
 
         $post_meta = $this->translate_to_default_locale($post_meta);
 
@@ -512,7 +518,9 @@ class cb_parallax_custom_background {
 
         $post_meta = get_post_meta($post->ID, $this->meta_key, true);
 
-        if( $post_meta['parallax_enabled'] == '1' ) {
+        // We do only proceed if the parallax option is enabled or if there is meta data stored.
+        if( isset( $post_meta['parallax_enabled'] ) && $post_meta['parallax_enabled']  == '1' || false === $post_meta ) {
+
             return;
         }
 
@@ -521,6 +529,7 @@ class cb_parallax_custom_background {
 
         // We do only proceed if an image is set.
         if( $image === '' ) {
+
             return;
         }
 
@@ -529,6 +538,7 @@ class cb_parallax_custom_background {
 
         // If there is no image or color, bail.
         if( empty( $image ) && empty( $color ) ) {
+
             return;
         }
 
@@ -564,6 +574,7 @@ class cb_parallax_custom_background {
         }
 
         $parallax_enabled = true == $post_meta['parallax_enabled'] ? $post_meta['parallax_enabled'] : false;
+
         // We bail, if the parallax option is enabled and the image is served trough the jQuery script. Else we echo the style for the custom background,
         // while the script won't be executed.
         if( $parallax_enabled ) {
