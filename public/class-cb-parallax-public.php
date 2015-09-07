@@ -134,12 +134,14 @@ class cb_parallax_public {
         $post_meta = get_post_meta( get_the_ID()/*$GLOBALS['page_id']*/, $this->meta_key, true );
 
         // Checks for the "scrolling preserved" option.
-        $scrolling_preserved = get_option( $this->meta_key, true );
+        $scrolling_preserved = '1' == get_option( $this->meta_key, true ) ? get_option( $this->meta_key, true ) : false;
 
-        $parallax_enabled = isset( $post_meta['parallax_enabled'] ) ? $post_meta['parallax_enabled'] : false;
+        $parallax_enabled = ( isset( $post_meta['parallax_enabled'] ) && '1' == $post_meta['parallax_enabled'] ) ? $post_meta['parallax_enabled'] : false;
+
+        $wp_script_is = ( true === wp_script_is( $handle, $list ) ) ? true : false;
 
         // If so, or if scrolling is not preserved, we do only load the script for the public part.
-        if( ( false === $parallax_enabled && false !== wp_script_is( $handle, $list ) ) || '1' != $scrolling_preserved ) {
+        if( ( false === $parallax_enabled && false === $wp_script_is ) && false === $scrolling_preserved || false === $parallax_enabled && false === $scrolling_preserved ) {
 
             // Public part.
             wp_enqueue_script(
