@@ -251,7 +251,7 @@ class cb_parallax_public_localisation {
 
         $this->image_meta = [ ];
 
-        if( '' === get_post_meta($post->ID, $this->meta_key, true) ) {
+        if( false === get_post_meta($post->ID, $this->meta_key, true) || '' === get_post_meta( $post->ID, $this->meta_key, true ) ) {
             return;
         }
 
@@ -299,7 +299,7 @@ class cb_parallax_public_localisation {
 
         $this->post_meta = [ ];
 
-        if( '' === get_post_meta($post->ID, $this->meta_key, true) ) {
+        if( false === get_post_meta($post->ID, $this->meta_key, true) || '' === get_post_meta( $post->ID, $this->meta_key, true ) ) {
             return;
         }
 
@@ -310,6 +310,8 @@ class cb_parallax_public_localisation {
         $post_meta = $this->translate_to_default_locale($post_meta);
 
         // Below we sort of cache the values and make sure they have been white-listed. Otherwise, we set the default value.
+
+        $this->post_meta['backgroundColor'] = ! empty( $post_meta['background_color'] ) ? $post_meta['background_color'] : '';
 
         // Image options.
         $this->post_meta['backgroundRepeat'] = in_array($post_meta['background_repeat'], $this->allowed['repeat']) ? $post_meta['background_repeat'] : array_values($this->allowed['repeat'])[0];
@@ -334,6 +336,8 @@ class cb_parallax_public_localisation {
         $this->post_meta['overlayImage'] = in_array($post_meta['overlay_image'], $this->allowed['overlay_image']) ? $post_meta['overlay_image'] : array_values($this->allowed['overlay_image'])[0];
 
         $this->post_meta['overlayOpacity'] = in_array($post_meta['overlay_opacity'], $this->allowed['overlay_opacity']) ? $post_meta['overlay_opacity'] : array_values($this->allowed['overlay_opacity'])[3];
+
+        $this->post_meta['overlayColor'] = ! empty( $post_meta['overlay_color'] ) ? $post_meta['overlay_color'] : '';
     }
 
     /**
@@ -516,7 +520,7 @@ class cb_parallax_public_localisation {
 
         $value = get_option($this->meta_key);
 
-        return array( 'preserveScrolling' => $value );
+        return array( 'scrollingPreserved' => $value );
     }
 
     /**

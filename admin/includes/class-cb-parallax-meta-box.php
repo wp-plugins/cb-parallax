@@ -308,6 +308,8 @@ class cb_parallax_meta_box {
         $overlay_image = ! empty( $post_meta['overlay_image'] ) ? $post_meta['overlay_image'] : array_values($this->allowed['overlay_image'])[0];
 
         $overlay_opacity = ! empty( $post_meta['overlay_opacity'] ) ? $post_meta['overlay_opacity'] : array_values($this->allowed['overlay_opacity'])[3];
+
+        $overlay_color = ! empty( $post_meta['overlay_color'] ) ? $post_meta['overlay_color'] : '';
         ?>
 
         <!-- hidden fields. -->
@@ -457,7 +459,7 @@ class cb_parallax_meta_box {
                     <?php } ?>
                 </select>
             </p>
-            <p class="cbp-single-option-container">
+            <p class="cbp-single-option-container" id="cbp_overlay_image_container">
                 <label for="cbp_overlay_image"><?php _e('Overlay', $this->plugin_domain); ?></label>
                 <select name="cbp_overlay_image" id="cbp_overlay_image"
                         class="widefat cbp_overlay_image fancy-select cbp-fancy-select">
@@ -467,7 +469,7 @@ class cb_parallax_meta_box {
                     <?php } ?>
                 </select>
             </p>
-            <p class="cbp-single-option-container">
+            <p class="cbp-single-option-container" id="cbp_overlay_opacity_container">
                 <label for="cbp_overlay_opacity"><?php _e('Overlay Opacity', $this->plugin_domain); ?></label>
                 <select name="cbp_overlay_opacity" id="cbp_overlay_opacity"
                         class="widefat cbp_overlay_opacity fancy-select cbp-fancy-select">
@@ -476,6 +478,11 @@ class cb_parallax_meta_box {
                             value="<?php echo esc_attr($value); ?>" <?php selected($value, $overlay_opacity); ?> ><?php echo esc_html($value); ?></option>
                     <?php } ?>
                 </select>
+            </p>
+            <p class="cbp-single-option-container" id="cbp_overlay_color_container">
+                <label for="cbp_overlay_color"><?php _e( 'Overlay Color', $this->plugin_domain ); ?></label>
+                <input type="text" name="cbp_overlay_color" id="cbp_overlay_color"
+                       class="wp-color-picker cbp-color-picker" value="#<?php echo esc_attr( $overlay_color ); ?>"/>
             </p>
         </div>
         <!-- # parallax options. -->
@@ -546,6 +553,8 @@ class cb_parallax_meta_box {
         $meta['overlay_image'] = in_array($_POST['cbp_overlay_image'], $this->allowed['overlay_image']) ? $_POST['cbp_overlay_image'] : array_values($this->allowed['overlay_image'])[0];
 
         $meta['overlay_opacity'] = in_array($_POST['cbp_overlay_opacity'], $this->allowed['overlay_opacity']) ? $_POST['cbp_overlay_opacity'] : array_values($this->allowed['overlay_opacity'])[3];
+
+        $meta['overlay_color'] = ! empty( $_POST['cbp_overlay_color'] ) ? preg_replace( '/[^0-9a-fA-F]/', '', $_POST['cbp_overlay_color'] ) : '';
 
         // If an attachment is set...
         if( $meta['attachment_id'] != '' ) {

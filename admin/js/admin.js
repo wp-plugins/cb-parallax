@@ -36,13 +36,15 @@
         /*--------------------------------------------------
          * Color picker
          *------------------------------------------------*/
-        $('#cbp_background_color').wpColorPicker();
+        $('#cbp_background_color, #cbp_overlay_color').wpColorPicker();
 
         // Hide the label for the color picker.
         $('label[for="cbp_background_color"]').hide();
+        $('label[for="cbp_overlay_color"]').hide();
 
         // Localizes the text on the color picker.
-        $('div#cb-parallax-meta-box a.wp-color-result').prop('title', cbParallax.backgroundColorText);
+        $('#cb-parallax-meta-box > div:nth-child(3) > p:nth-child(5) > div:nth-child(2) > a:nth-child(1)').prop('title', cbParallax.backgroundColorText);
+        $('.cbp-parallax-options-container > p:nth-child(8) > div:nth-child(2) > a:nth-child(1)').prop('title', cbParallax.overlayColorText);
 
         /*--------------------------------------------------
          * Fancy Select
@@ -83,6 +85,15 @@
 
                 $('#cpb_vertical_scroll_direction_container').show();
                 $('#cbp_horizontal_alignment_container').show();
+            }
+        }
+
+        function toggleOverlayOptions() {
+
+            if ($("#cbp_overlay_image").val() != cbParallax.noneString) {
+                $('#cbp_overlay_opacity_container, #cbp_overlay_color_container').show();
+            } else {
+                $('#cbp_overlay_opacity_container, #cbp_overlay_color_container').hide();
             }
         }
 
@@ -138,15 +149,12 @@
                 $(".cbp-parallax-options-container").hide();
                 $(".cbp-add-media-button").show();
             }
-
-            /*// Toggle the options that depend on the direction (mode).
-             toggleParallaxSwitch();
-             toggleDirectionMode();*/
         }
 
         // Kick off.
         toggleParallaxSwitch();
         toggleDirectionMode();
+        toggleOverlayOptions();
         setInitialView();
 
         /*--------------------------------------------------
@@ -166,6 +174,13 @@
         parallaxEnabledSelect.fancySelect().on('change.fs', function () {
             $(this).trigger('change.$');
             toggleDirectionMode();
+        });
+
+        // "Toggle overlay options" listener (opacity / background-color).
+        var overlayOptions = $('select#cbp_overlay_image').parent();
+        overlayOptions.fancySelect().on('change.fs', function () {
+            $(this).trigger('change.$');
+            toggleOverlayOptions();
         });
 
         /*--------------------------------------------------

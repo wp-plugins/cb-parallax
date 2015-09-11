@@ -4,8 +4,8 @@ Tags: image, background, fullscreen, parallax, Hintergrund, Bild, Hintergrundbil
 
 Requires at least: 3.9  
 Tested up to: 4.3  
-Stable tag: 0.2.2  
-Version: 0.2.2  
+Stable tag: 0.2.3  
+Version: 0.2.3  
 Contributors: demispatti  
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -101,6 +101,13 @@ Unfortunately, I cannot provide free support for this plugin. I honestly wish I 
 3. Custom background meta box.
 
 == Changelog ==
+
+= Version 0.2.3 =
+
+1. Fixed some bugs.
+2. Added a background color to the image container to kind of simulate a "color" for the overlay. This is a temporary solution.
+3. Slightly enhanced meta box display behaviour.
+4. Added support for "portfolio" post type / entries for web- and media workers :)
 
 = Version 0.2.2 =
 

@@ -91,14 +91,15 @@ class cb_parallax_admin_localisation {
 
         if( is_admin() ) {
 
-            add_action('admin_enqueue_scripts', array( &$this, 'get_background_options' ), 1);
+            add_action('admin_enqueue_scripts', array( &$this, 'get_background_image_options' ), 1);
             add_action('admin_enqueue_scripts', array( &$this, 'localize_meta_box' ), 1000);
             add_action('admin_enqueue_scripts', array( &$this, 'localize_media_frame' ), 1000);
         }
     }
 
     /**
-     * Retrieves the source, width and and height of the custom background image, as well as the possible directions and the actually selected direction ( for "mode").
+     * Retrieves the source, width and and height of the custom background image,
+     * as well as the possible directions and the actually selected direction ( for "mode").
      * This is used to control display of the elements inside the meta box.
      *
      * @hooked_action
@@ -107,7 +108,7 @@ class cb_parallax_admin_localisation {
      * @access   public
      * @return   void
      */
-    public function get_background_options() {
+    public function get_background_image_options() {
 
         $this->image_options = [ ];
         $image_options_attributes = null;
@@ -166,11 +167,16 @@ class cb_parallax_admin_localisation {
 
             case( $locale == 'de_DE' );
 
-                $labels = array( 'locale' => $locale, 'switchesText' => array( 'On' => 'Ein', 'Off' => 'Aus' ) );
+                $labels = array(
+                    'locale'       => $locale,
+                    'switchesText' => array( 'On' => 'Ein', 'Off' => 'Aus' ) );
                 break;
+
             default:
 
-                $labels = array( 'locale' => 'default', 'switchesText' => array( 'On' => 'On', 'Off' => 'Off' ) );
+                $labels = array(
+                    'locale'       => 'default',
+                    'switchesText' => array( 'On' => 'On', 'Off' => 'Off' ) );
         }
 
         return $labels;
@@ -185,7 +191,10 @@ class cb_parallax_admin_localisation {
      */
     private function background_color_text() {
 
-        return array( 'backgroundColorText' => __('Background Color', $this->plugin_domain) );
+        return array(
+            'backgroundColorText' => __('Background Color', $this->plugin_domain),
+            'overlayColorText'    => __( 'Overlay Color', $this->plugin_domain ),
+            'noneString'          => __( 'none', $this->plugin_domain ) );
     }
 
     /**

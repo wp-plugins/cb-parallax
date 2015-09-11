@@ -110,9 +110,7 @@ class cb_parallax_help_tab {
 
         $html .= '<p>' . __("This plugin enables you to have a fullscreen background image with a parallax effect with any image that meets the minimum dimensional requirements ( 1920 x 1200px for vertical parallax, wider for horizontal parallax). So it works vertically or horizontally, as a fixed background or scrolling with the content. Or not at all. That's all up to you.", $this->plugin_domain) . '</p>';
 
-        $html .= '<p>' . __("On parallaxed images, there's an option to set an overlay pattern as well as an option to customize the opacity of that overlay.", $this->plugin_domain) . '</p>';
-
-        $html .= '<p>' . __("For more help regarding 'cbParallax', you'll soon find a working link here. <a href='#' target='_blank'>soon</a>.", $this->plugin_domain) . '</p>';
+        $html .= '<p>' . __("On parallaxing images, there's an option to set an overlay pattern as well as an option to customize the opacity of that overlay.", $this->plugin_domain) . '</p>';
 
         $html .= '<p>' . __("The indicated directions are meant to be met while scrolling down the content.", $this->plugin_domain) . '</p>';
 

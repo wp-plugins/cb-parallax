@@ -65,7 +65,8 @@
         imageWidth: $(window).innerWidth(),
         imageHeight: $(window).innerHeight(),
         overlayPath: '',
-        overlayOpacity: '0.3'
+        overlayOpacity: '0.3',
+        overlayColor: ''
     };
 
     var parallax = {
@@ -78,13 +79,13 @@
         verticalAlignment: cbParallax.verticalAlignment != 'undefined' ? cbParallax.verticalAlignment : defaultOptions.verticalAlignment
     };
 
-    var scrolling = {preserved: cbParallax.preserveScrolling != 'undefined' ? cbParallax.preserveScrolling : false};
+    var scrolling = {preserved: cbParallax.scrollingPreserved != 'undefined' ? cbParallax.scrollingPreserved : false};
 
     var image = {
         src: cbParallax.imageSrc != 'undefined' ? cbParallax.imageSrc : defaultOptions.imageSrc,
         backgroundColor: cbParallax.backgroundColor != 'undefined' ? cbParallax.backgroundColor : defaultOptions.backgroundColor,
-        positionX: cbParallax.position_x != 'undefined' ? cbParallax.position_x : defaultOptions.positionX,
-        positionY: cbParallax.position_y != 'undefined' ? cbParallax.position_y : defaultOptions.positionX,
+        positionX: cbParallax.positionX != 'undefined' ? cbParallax.positionX : defaultOptions.positionX,
+        positionY: cbParallax.positionY != 'undefined' ? cbParallax.positionY : defaultOptions.positionX,
         backgroundAttachment: cbParallax.backgroundAttachment != 'undefined' ? cbParallax.backgroundAttachment : defaultOptions.backgroundAttachment,
 
         width: cbParallax.imageWidth != 'undefined' ? cbParallax.imageWidth : defaultOptions.imageWidth,
@@ -94,7 +95,8 @@
     var overlay = {
         path: cbParallax.overlayPath != 'undefined' ? cbParallax.overlayPath : defaultOptions.overlayPath,
         image: cbParallax.overlayImage != 'undefined' ? cbParallax.overlayImage : defaultOptions.overlayImage,
-        opacity: cbParallax.overlayOpacity != 'undefined' ? cbParallax.overlayOpacity : defaultOptions.overlayOpacity
+        opacity: cbParallax.overlayOpacity != 'undefined' ? cbParallax.overlayOpacity : defaultOptions.overlayOpacity,
+        color: cbParallax.overlayColor != 'undefined' ? cbParallax.overlayColor : defaultOptions.overlayColor
     };
 
     var body = $('body');
@@ -240,8 +242,9 @@
             overlayContainer = $('#cbp_overlay');
 
             overlayContainer.css({
-                'background-image': 'url(' + overlay.path + overlay.image + ')',
-                'opacity': overlay.opacity
+                'background': 'url(' + overlay.path + overlay.image + ')',
+                'background-color': '#' + overlay.color,
+                'opacity': overlay.opacity,
             });
         }
     }
@@ -257,7 +260,8 @@
         imageContainer.css({
             'width': image.width,
             'height': image.height + 'px',
-            'background-size': image.width + 'px' + ' ' + image.height + 'px'
+            'background-size': image.width + 'px' + ' ' + image.height + 'px',
+            'background-color': '#' + image.backgroundColor
         });
     }
 

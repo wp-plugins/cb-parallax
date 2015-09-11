@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Enables the custom background support for the given post types.
+ * Adds the checkbox on the general settings page to toggle nicescroll behaviour.
  *
  * @link              https://github.com/demispatti/cb-parallax/
  * @since             0.1.0

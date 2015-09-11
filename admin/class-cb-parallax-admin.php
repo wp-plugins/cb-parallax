@@ -273,7 +273,7 @@ class cb_parallax_admin {
 
         $admin_localisation = new cb_parallax_admin_localisation($this->get_plugin_name(), $this->get_plugin_domain(), $this->get_plugin_version(), $this->get_meta_key());
 
-        $this->loader->add_action('admin_enqueue_scripts', $admin_localisation, 'get_background_options', 1);
+        $this->loader->add_action('admin_enqueue_scripts', $admin_localisation, 'get_background_image_options', 1);
         $this->loader->add_action('admin_enqueue_scripts', $admin_localisation, 'localize_meta_box', 1000);
         $this->loader->add_action('admin_enqueue_scripts', $admin_localisation, 'localize_media_frame', 1000);
     }
