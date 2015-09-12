@@ -249,14 +249,19 @@ class cb_parallax_public_localisation {
 
         global $post;
 
+        // Here we need to check if $post is an object. If not, we bail.
+        if( ! is_object( $post ) || null === $post )
+            return;
+
         $this->image_meta = [ ];
 
-        if( false === get_post_meta($post->ID, $this->meta_key, true) || '' === get_post_meta( $post->ID, $this->meta_key, true ) ) {
+        // Get the post meta data.
+        $post_meta = get_post_meta( $post->ID, $this->meta_key, true );
+
+        // If we have no related post meta data, we don't do anything here.
+        if( false == $post_meta || '' == $post_meta ) {
             return;
         }
-
-        // Get the post meta data.
-        $post_meta = get_post_meta($post->ID, $this->meta_key, true);
 
         $image_attributes = null;
         $attachment_id = $post_meta['attachment_id'];
@@ -297,14 +302,19 @@ class cb_parallax_public_localisation {
 
         global $post;
 
+        // Here we need to check if $post is an object. If not, we bail.
+        if( ! is_object( $post ) || null === $post )
+            return;
+
         $this->post_meta = [ ];
 
-        if( false === get_post_meta($post->ID, $this->meta_key, true) || '' === get_post_meta( $post->ID, $this->meta_key, true ) ) {
+        // Get the post meta data.
+        $post_meta = get_post_meta( $post->ID, $this->meta_key, true );
+
+        // If we have no related post meta data, we don't do anything here.
+        if( false == $post_meta || '' == $post_meta ) {
             return;
         }
-
-        // Get the post meta data.
-        $post_meta = get_post_meta($post->ID, $this->meta_key, true);
 
         // Translates parameters into the default locale to propperly serve the script.
         $post_meta = $this->translate_to_default_locale($post_meta);
@@ -532,6 +542,12 @@ class cb_parallax_public_localisation {
      * @return   void
      */
     public function localize_public_area() {
+
+        global $post;
+
+        // Here we need to check if $post is an object. If not, we're not on a singular thus we bail.
+        if( ! is_object( $post ) || null === $post )
+            return;
 
         // Passes the parameters to the script.
         wp_localize_script(

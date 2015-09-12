@@ -126,12 +126,16 @@ class cb_parallax_public {
      */
     public function enqueue_scripts() {
 
+        // Here we need to make sure we're on a singular page.
+        if( ! is_singular() )
+            return;
+
         // Here we perform a check if any default Nicescroll library has been registered.
         $handle = 'jquery.nicescroll.js' || 'jquery.nicescroll.min.js';
         $list = 'registered';
 
         // Retrieves the "parallax enabled" option set within the meta box.
-        $post_meta = get_post_meta( get_the_ID()/*$GLOBALS['page_id']*/, $this->meta_key, true );
+        $post_meta = get_post_meta( get_the_ID(), $this->meta_key, true );
 
         // Checks for the "scrolling preserved" option.
         $scrolling_preserved = '1' == get_option( $this->meta_key, true ) ? get_option( $this->meta_key, true ) : false;

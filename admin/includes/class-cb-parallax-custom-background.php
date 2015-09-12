@@ -516,11 +516,19 @@ class cb_parallax_custom_background {
 
         global $post;
 
+        // Here we need to check if $post is an object. If not, we bail.
+        if( ! is_object( $post ) || null === $post )
+            return;
+
         $post_meta = get_post_meta($post->ID, $this->meta_key, true);
+
+        // If we have no related post meta data, we don't do anything here.
+        if( false == $post_meta || '' == $post_meta ) {
+            return;
+        }
 
         // We do only proceed if the parallax option is enabled or if there is meta data stored.
         if( isset( $post_meta['parallax_enabled'] ) && $post_meta['parallax_enabled']  == '1' || false === $post_meta ) {
-
             return;
         }
 
