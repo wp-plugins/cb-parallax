@@ -2,6 +2,7 @@
 
 Tags: image, background, fullscreen, parallax, Hintergrund, Bild, Hintergrundbild
 
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XLMMS7C62S76Q  
 Requires at least: 3.9  
 Tested up to: 4.3  
 Stable tag: 0.2.3
