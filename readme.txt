@@ -2,11 +2,10 @@
 
 Tags: image, background, fullscreen, parallax, Hintergrund, Bild, Hintergrundbild
 
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XLMMS7C62S76Q  
 Requires at least: 3.9  
-Tested up to: 4.3  
-Stable tag: 0.2.3
-Version: 0.2.3
+Tested up to: 4.3.1
+Stable tag: 0.2.4
+Version: 0.2.4
 Contributors: demispatti  
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -26,15 +25,15 @@ This plugin enables you to set a custom background image.  It supports vertical 
 - Supports and is supported by Nicescroll
 - Various overlays to choose from
 
-This plugin works with recent versions of Chrome, Firefox, Internet Explorer, Opera and Safari (not the Windows Version tough).
+This plugin works with recent versions of Chrome, Firefox, Internet Explorer, Opera and Safari.
 
 == Requirements ==
 
 Your theme must support the core WordPress implementation of the [Custom Backgrounds](http://codex.wordpress.org/Custom_Backgrounds) theme feature.
 
-In order to use the parallax feature, I decided to set the minimum required image dimensions to 1920px * 1200px, so that covers a fullHD screen with a slight vertical parallax movement ( Image height - viewport height, so 1200px - 1080px gives 120px offset to move the image. I hope you get the point here.) So choose image size according to the expected device resolution.
+In order to use the parallax feature, I decided to set the minimum required image dimensions to 1920px * 1200px, so that covers a fullHD screen with a slight vertical parallax movement ( Image height - viewport height, so 1200px - 1080px gives 120px offset to move the image. I hope you get the point here.)
 
-Your theme's display must be "boxed" somehow or an opacity should be added to the page content container.
+Your theme's layout must be "boxed" somehow or an opacity should be added to the page content container for the background image to be seen.
 
 == Installation ==
 
@@ -87,13 +86,17 @@ If you're a theme author, consider adding support for this if you can make it fi
 
 	add_theme_support( 'custom-background' );
 
-= Are there any incompatibility problems, limitations or known issues? =
+= Are there any known limitations? =
 
-Since the background image container wraps the body element, it usually resembles the viewport dimensions. This means, that on themes where the navigation bar is on the side, the sidebar covers a part of the viewport and thus also a part of the image.
+This is not really a limitation of functionality, but since the background image container wraps the body element, it usually resembles the viewport dimensions. This means, that on themes where the navigation bar is on the side, the sidebar covers a part of the viewport and thus also a part of the image (logic, but noteworthy).
 
 = Can you help me? =
 
-Unfortunately, I cannot provide free support for this plugin. I honestly wish I could. However, very soon you will find a link for further informations.
+Yes. I have a look at the plugin's support page two or three times a week and I provide some basic support there.
+
+= Are there any known issues? =
+
+Yes. If you're using the "Vantage" theme from SiteOrigin, the background image won't be displayed on Firefox. On every other browser it will. I'm on it.
 
 == Screenshots ==
 
@@ -103,10 +106,16 @@ Unfortunately, I cannot provide free support for this plugin. I honestly wish I 
 
 == Changelog ==
 
+= Version 0.2.4 =
+
+1. Optimized the script for the public part
+2. Added a section to the readme file regarding known issues
+3. Updated the readme file
+
 = Version 0.2.3 =
 
 1. Fixed some bugs.
-2. Added a background color to the image container to kind of simulate a "color" for the overlay. This is a temporary solution.
+2. Added a background color to the image container to kind of simulate a "color" for the overlay.
 3. Slightly enhanced meta box display behaviour.
 4. Added support for "portfolio" post type / entries for web- and media workers :)
 
@@ -139,4 +148,4 @@ Unfortunately, I cannot provide free support for this plugin. I honestly wish I 
 
 = Version 0.1.0 =
 
-* First release :-)
+First release :-)

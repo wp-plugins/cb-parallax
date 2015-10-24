@@ -16,39 +16,39 @@
  */
 class cb_parallax_i18n {
 
-    /**
-     * The domain specified for this plugin.
-     *
-     * @since    0.1.0
-     * @access   private
-     * @var      string $plugin_domain
-     */
-    private $plugin_domain;
+	/**
+	 * The domain specified for this plugin.
+	 *
+	 * @since    0.1.0
+	 * @access   private
+	 * @var      string $plugin_domain
+	 */
+	private $plugin_domain;
 
-    /**
-     * Load the plugin text domain for translation.
-     *
-     * @hooked_action
-     *
-     * @since    0.1.0
-     * @return   void
-     * @access   public
-     */
-    public function load_plugin_textdomain() {
+	/**
+	 * Load the plugin text domain for translation.
+	 *
+	 * @hooked_action
+	 *
+	 * @since    0.1.0
+	 * @return   void
+	 * @access   public
+	 */
+	public function load_plugin_textdomain() {
 
-        load_plugin_textdomain($this->plugin_domain, false, dirname(dirname(plugin_basename(__FILE__))) . '/languages/');
-    }
+		load_plugin_textdomain( $this->plugin_domain, FALSE, dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/' );
+	}
 
-    /**
-     * Set the domain equal to that of the specified domain.
-     *
-     * @since    0.1.0
-     * @access   public
-     * @param    string $plugin_domain
-     * @return   void
-     */
-    public function set_domain( $plugin_domain ) {
+	/**
+	 * Set the domain equal to that of the specified domain.
+	 *
+	 * @since    0.1.0
+	 * @access   public
+	 * @param    string $plugin_domain
+	 * @return   void
+	 */
+	public function set_domain( $plugin_domain ) {
 
-        $this->plugin_domain = $plugin_domain;
-    }
+		$this->plugin_domain = $plugin_domain;
+	}
 }
