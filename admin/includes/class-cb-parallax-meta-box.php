@@ -48,7 +48,7 @@ class cb_parallax_meta_box {
 	 * @access public
 	 * @var    bool
 	 */
-	public $theme_has_callback = FALSE;
+	public $theme_has_callback = false;
 
 	/**
 	 * The name of the meta key for accessing post meta data.
@@ -104,8 +104,8 @@ class cb_parallax_meta_box {
 
 		// Image options for a dynamic background image.
 		$this->allowed['parallax'] = array(
-			'off' => FALSE,
-			'on'  => TRUE,
+			'off' => false,
+			'on'  => true,
 		);
 
 		$this->allowed['direction'] = array(
@@ -223,7 +223,7 @@ class cb_parallax_meta_box {
 		$wp_head_callback = get_theme_support( 'custom-background', 'wp-head-callback' );
 
 		/* Checks if the theme has set up a custom callback. */
-		$this->theme_has_callback = empty($wp_head_callback) || '_custom_background_cb' === $wp_head_callback ? FALSE : TRUE;
+		$this->theme_has_callback = empty($wp_head_callback) || '_custom_background_cb' === $wp_head_callback ? false : true;
 
 		// Add the meta box
 		add_action( 'add_meta_boxes', array( &$this, 'add_meta_box' ), 5 );
@@ -259,16 +259,16 @@ class cb_parallax_meta_box {
 	public function display_meta_box( $post ) {
 
 		// Get the post meta.
-		$post_meta = get_post_meta( $post->ID, $this->meta_key, TRUE );
+		$post_meta = get_post_meta( $post->ID, $this->meta_key, true );
 
 		// Get the background color.
 		$background_color = !empty($post_meta['background_color']) ? $post_meta['background_color'] : '';
 
 		// Get the background image attachment ID.
-		$attachment_id = isset($post_meta['attachment_id']) ? $post_meta['attachment_id'] : FALSE;
+		$attachment_id = isset($post_meta['attachment_id']) ? $post_meta['attachment_id'] : false;
 
 		// If an attachment ID was found, get the image source.
-		if( FALSE !== $attachment_id ) {
+		if( false !== $attachment_id ) {
 			$image = wp_get_attachment_image_src( absint( $attachment_id ), 'full' );
 		}
 
@@ -352,7 +352,7 @@ class cb_parallax_meta_box {
 			<label class="cbp-switch">
 				<input type="checkbox" id="cbp_parallax_enabled" class="cbp-switch-input cbp_parallax_enabled"
 				       name="cbp_parallax_enabled" value="1"
-					<?php checked( 1, isset($parallax_enabled) ? $parallax_enabled : 0, TRUE ); ?>>
+					<?php checked( 1, isset($parallax_enabled) ? $parallax_enabled : 0, true ); ?>>
 				<span class="cbp-switch-label cbp_parallax_enabled" data-on="On" data-off="Off"></span>
 				<span class="cbp-switch-handle"></span>
 			</label>
@@ -520,7 +520,7 @@ class cb_parallax_meta_box {
 		}
 
 		// Parallax
-		$meta['parallax_enabled'] = isset($_POST['cbp_parallax_enabled']) ? $_POST['cbp_parallax_enabled'] : FALSE;
+		$meta['parallax_enabled'] = isset($_POST['cbp_parallax_enabled']) ? $_POST['cbp_parallax_enabled'] : false;
 
 		$meta['direction'] = in_array( $_POST['cbp_direction'], $this->allowed['direction'] ) ? $_POST['cbp_direction'] : array_values( $this->allowed['direction'] )[0];
 		// Sanitize the value for the color.
@@ -558,7 +558,7 @@ class cb_parallax_meta_box {
 		// If an attachment is set...
 		if( $meta['attachment_id'] != '' ) {
 
-			$is_custom_header = get_post_meta( $post->ID, '_wp_attachment_is_custom_background', TRUE );
+			$is_custom_header = get_post_meta( $post->ID, '_wp_attachment_is_custom_background', true );
 
 			// ...add the image to the pool of uploaded background images for this theme.
 			if( $is_custom_header !== get_stylesheet() ) {

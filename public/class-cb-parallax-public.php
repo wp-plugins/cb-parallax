@@ -80,7 +80,34 @@ class cb_parallax_public {
 		$this->meta_key = $meta_key;
 
 		$this->load_dependencies();
-		$this->define_public_localisation();
+	}
+
+	/**
+	 * Checks if it should "superseed" a possibly installed "Nicescrollr" plugin on the frontend.
+	 *
+	 * @hooked_action
+	 *
+	 * @since    0.2.4
+	 * @access   public
+	 * @return   void
+	 */
+	public function check_for_nicescrollr_plugin() {
+
+		// Retrieves the "parallax enabled" option set within the meta box.
+		$post_meta = get_post_meta( get_the_ID(), $this->meta_key, true );
+		// Checks for the "scrolling preserved" option.
+		$scrolling_preserved = ('1' == get_option( $this->meta_key, true ) ? get_option( $this->meta_key, true ) : false);
+
+		$parallax_enabled = (isset($post_meta['parallax_enabled']) && '1' == $post_meta['parallax_enabled'] ? $post_meta['parallax_enabled'] : false);
+
+		if( $parallax_enabled || $scrolling_preserved ) {
+
+			include_once(ABSPATH . 'wp-admin/includes/plugin.php');
+			if( is_plugin_active( 'nicescrollr/nsr.php' ) ) {
+
+				set_transient( 'cb_parallax_superseeds_nicescrollr_plugin_on_frontend', true, 60 );
+			}
+		}
 	}
 
 	/**
@@ -105,7 +132,7 @@ class cb_parallax_public {
 	 * @return   void
 	 */
 	public function enqueue_styles() {
-
+		
 		wp_enqueue_style(
 			$this->plugin_name . '-public-css',
 			plugin_dir_url( __FILE__ ) . 'css/public.css',
@@ -126,75 +153,42 @@ class cb_parallax_public {
 	 */
 	public function enqueue_scripts() {
 
-		// Here we need to make sure we're on a singular page.
-		if( !is_singular() ) {
-			return;
-		}
+		// Nicescroll, modified version.
+		wp_enqueue_script(
+			$this->plugin_name . '-cbp-nicescroll-min-js',
+			plugin_dir_url( __FILE__ ) . '../vendor/nicescroll/jquery.cbp.nicescroll.min.js',
+			array( 'jquery' ),
+			$this->plugin_version,
+			true
+		);
 
-		// Here we perform a check if any default Nicescroll library has been registered.
-		$handle = 'jquery.nicescroll.js' || 'jquery.nicescroll.min.js';
-		$list = 'registered';
-
-		// Retrieves the "parallax enabled" option set within the meta box.
-		$post_meta = get_post_meta( get_the_ID(), $this->meta_key, TRUE );
-
-		// Checks for the "scrolling preserved" option.
-		$scrolling_preserved = '1' == get_option( $this->meta_key, TRUE ) ? get_option( $this->meta_key, TRUE ) : FALSE;
-
-		$parallax_enabled = (isset($post_meta['parallax_enabled']) && '1' == $post_meta['parallax_enabled']) ? $post_meta['parallax_enabled'] : FALSE;
-
-		$wp_script_is = (TRUE === wp_script_is( $handle, $list )) ? TRUE : FALSE;
-
-		// If so, or if scrolling is not preserved, we do only load the script for the public part.
-		if( (FALSE === $parallax_enabled && FALSE === $wp_script_is) && FALSE === $scrolling_preserved || FALSE === $parallax_enabled && FALSE === $scrolling_preserved ) {
-
-			// Public part.
-			wp_enqueue_script(
-				$this->plugin_name . '-public-js',
-				plugin_dir_url( __FILE__ ) . 'js/public.js',
-				array( 'jquery' ),
-				$this->plugin_version,
-				TRUE
-			);
-			// Else we load our Nicescroll library, too.
-		} else {
-
-			// Nicescroll, modified version.
-			wp_enqueue_script(
+		// Public part.
+		wp_enqueue_script(
+			$this->plugin_name . '-public-js',
+			plugin_dir_url( __FILE__ ) . 'js/public.js',
+			array(
+				'jquery',
 				$this->plugin_name . '-cbp-nicescroll-min-js',
-				plugin_dir_url( __FILE__ ) . '../vendor/nicescroll/jquery.cbp.nicescroll.min.js',
-				array( 'jquery' ),
-				$this->plugin_version,
-				TRUE
-			);
-
-			// Public part.
-			wp_enqueue_script(
-				$this->plugin_name . '-public-js',
-				plugin_dir_url( __FILE__ ) . 'js/public.js',
-				array(
-					'jquery',
-					$this->plugin_name . '-cbp-nicescroll-min-js',
-				),
-				$this->plugin_version,
-				TRUE
-			);
-		}
+			),
+			$this->plugin_version,
+			true
+		);
 	}
 
 	/**
 	 * Initiates the localisation for the public part of the plugin.
 	 *
+	 * @hooked_action
+	 *
 	 * @since    0.1.0
 	 * @access   private
 	 * @return   void
 	 */
-	private function define_public_localisation() {
+	public function define_public_localisation() {
 
 		$public_localisation = new cb_parallax_public_localisation( $this->get_plugin_name(), $this->get_plugin_domain(), $this->get_plugin_version(), $this->get_meta_key() );
-
-		$this->loader->add_action( 'wp_enqueue_scripts', $public_localisation, 'get_image_meta', 100 );
-		$this->loader->add_action( 'template_redirect', $public_localisation, 'get_post_meta', 500 );
+		$this->loader->add_action( 'wp_enqueue_scripts', $public_localisation, 'get_image_meta', 12 );
+		$this->loader->add_action( 'template_redirect', $public_localisation, 'get_post_meta' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $public_localisation, 'localize_public_area', 1000 );
 	}
 

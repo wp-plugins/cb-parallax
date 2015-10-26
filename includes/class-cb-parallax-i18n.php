@@ -36,7 +36,7 @@ class cb_parallax_i18n {
 	 */
 	public function load_plugin_textdomain() {
 
-		load_plugin_textdomain( $this->plugin_domain, FALSE, dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/' );
+		load_plugin_textdomain( $this->plugin_domain, false, dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/' );
 	}
 
 	/**

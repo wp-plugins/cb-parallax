@@ -114,10 +114,10 @@ class cb_parallax_admin_localisation {
 		$image_options_attributes = NULL;
 
 		// Get the background image attachment ID.
-		$post_meta = get_post_meta( get_the_ID(), $this->meta_key, TRUE );
+		$post_meta = get_post_meta( get_the_ID(), $this->meta_key, true );
 
 		if( !empty($post_meta['attachment_id']) ) {
-			$image_options_attributes = wp_get_attachment_image_src( absint( $post_meta['attachment_id'] ), FALSE );
+			$image_options_attributes = wp_get_attachment_image_src( absint( $post_meta['attachment_id'] ), false );
 
 			$this->image_options['attachmentUrl'] = $image_options_attributes[0];
 			$this->image_options['imageWidth'] = $image_options_attributes[1];
@@ -125,17 +125,17 @@ class cb_parallax_admin_localisation {
 
 			if( $this->image_options['imageWidth'] >= 1920 && $this->image_options['imageHeight'] >= 1200 ) {
 
-				$this->image_options['parallaxPossible'] = TRUE;
+				$this->image_options['parallaxPossible'] = true;
 			} else {
 
-				$this->image_options['parallaxPossible'] = FALSE;
+				$this->image_options['parallaxPossible'] = false;
 			}
 
-			$this->image_options['parallaxEnabled'] = !empty($post_meta['parallax_enabled']) ? $post_meta['parallax_enabled'] : FALSE;
+			$this->image_options['parallaxEnabled'] = !empty($post_meta['parallax_enabled']) ? $post_meta['parallax_enabled'] : false;
 
 			// Below we retrieve localized strings - the actual value and the allowed options for that value to check against inside the script.
-			$direction = !empty($post_meta['direction']) ? $post_meta['direction'] : FALSE;
-			if( FALSE !== $direction && $direction === __( 'vertical', $this->plugin_domain ) ) {
+			$direction = !empty($post_meta['direction']) ? $post_meta['direction'] : false;
+			if( false !== $direction && $direction === __( 'vertical', $this->plugin_domain ) ) {
 
 				$this->image_options['actualDirection'] = __( 'vertical', $this->plugin_domain );
 			} else {

@@ -183,7 +183,7 @@ class cb_parallax_admin {
 			plugin_dir_url( __FILE__ ) . '../vendor/fancy-select/fancySelect.js',
 			array( 'jquery' ),
 			$this->plugin_version,
-			TRUE
+			true
 		);
 
 		// Admin part.
@@ -197,7 +197,7 @@ class cb_parallax_admin {
 				$this->plugin_name . '-inc-fancy-select-js',
 			),
 			$this->plugin_version,
-			TRUE
+			true
 		);
 	}
 

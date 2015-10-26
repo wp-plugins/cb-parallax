@@ -99,7 +99,7 @@ class cb_parallax_general_settings {
 
 		<label class="cbp-switch">
 			<input type="checkbox" id="<?php echo $this->meta_key ?>" class="cbp-switch-input" name="<?php echo $this->meta_key ?>"
-			       value="1" <?php checked( 1, isset($value) ? $value : FALSE, TRUE ); ?>>
+			       value="1" <?php checked( 1, isset($value) ? $value : false, true ); ?>>
 			<span class="cbp-switch-label" data-on="On" data-off="Off"></span>
 			<span class="cbp-switch-handle"></span>
 		</label>

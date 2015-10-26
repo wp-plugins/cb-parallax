@@ -245,7 +245,7 @@ class cb_parallax_custom_background {
 		$wp_head_callback = get_theme_support( 'custom-background', 'wp-head-callback' );
 
 		// If the theme hasn't set up a custom callback, let's roll our own with a few extra options.
-		if( FALSE === $wp_head_callback || '_custom_background_cb' === $wp_head_callback ) {
+		if( false === $wp_head_callback || '_custom_background_cb' === $wp_head_callback ) {
 
 			add_theme_support( 'custom-background', array( 'wp-head-callback' => array( &$this, 'echo_custom_background' ) ) );
 		}
@@ -281,10 +281,10 @@ class cb_parallax_custom_background {
 		}
 
 		// Get the post meta.
-		$post_meta = get_post_meta( $post->ID, $this->meta_key, TRUE );
+		$post_meta = get_post_meta( $post->ID, $this->meta_key, true );
 
 		// If there is no post meta stored yet, we bail.
-		if( FALSE === $post_meta || '' === $post_meta ) {
+		if( false === $post_meta || '' === $post_meta ) {
 
 			return;
 		}
@@ -295,10 +295,10 @@ class cb_parallax_custom_background {
 		$this->color = !empty($post_meta['background_color']) ? $post_meta['background_color'] : '';
 
 		// Get the background image attachment ID.
-		$attachment_id = !empty($post_meta['attachment_id']) ? $post_meta['attachment_id'] : FALSE;
+		$attachment_id = !empty($post_meta['attachment_id']) ? $post_meta['attachment_id'] : false;
 
 		// If an attachment ID was found, get the image source.
-		if( FALSE !== $attachment_id ) {
+		if( false !== $attachment_id ) {
 
 			$image = wp_get_attachment_image_src( $attachment_id, 'full' );
 
@@ -521,15 +521,15 @@ class cb_parallax_custom_background {
 			return;
 		}
 
-		$post_meta = get_post_meta( $post->ID, $this->meta_key, TRUE );
+		$post_meta = get_post_meta( $post->ID, $this->meta_key, true );
 
 		// If we have no related post meta data, we don't do anything here.
-		if( FALSE == $post_meta || '' == $post_meta ) {
+		if( false == $post_meta || '' == $post_meta ) {
 			return;
 		}
 
 		// We do only proceed if the parallax option is enabled or if there is meta data stored.
-		if( isset($post_meta['parallax_enabled']) && $post_meta['parallax_enabled'] == '1' || FALSE === $post_meta ) {
+		if( isset($post_meta['parallax_enabled']) && $post_meta['parallax_enabled'] == '1' || false === $post_meta ) {
 			return;
 		}
 
@@ -587,7 +587,7 @@ class cb_parallax_custom_background {
 			$style .= " background-attachment: {$attachment};";
 		}
 
-		$parallax_enabled = TRUE == $post_meta['parallax_enabled'] ? $post_meta['parallax_enabled'] : FALSE;
+		$parallax_enabled = true == $post_meta['parallax_enabled'] ? $post_meta['parallax_enabled'] : false;
 
 		// We bail, if the parallax option is enabled and the image is served trough the jQuery script. Else we echo the style for the custom background,
 		// while the script won't be executed.
