@@ -35,6 +35,8 @@ In order to use the parallax feature, I decided to set the minimum required imag
 
 Your theme's layout must be "boxed" somehow or an opacity should be added to the page content container for the background image to be seen.
 
+PHP version 5.4 or above.
+
 == Installation ==
 
 1. Upload the `cb-parallax` folder to your `/wp-content/plugins/` directory.
