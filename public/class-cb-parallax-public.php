@@ -153,6 +153,15 @@ class cb_parallax_public {
 	 */
 	public function enqueue_scripts() {
 
+		global $post;
+
+		$post_meta = get_post_meta( $post->ID, $this->meta_key, true );
+
+		//* Checks if parallax is enabled and if we need to load these scripts
+		if( isset($post_meta) && $post_meta == '' || false == $post_meta['parallax_enabled'] ) {
+			return;
+		}
+
 		// Nicescroll, modified version.
 		wp_enqueue_script(
 			$this->plugin_name . '-cbp-nicescroll-min-js',
@@ -185,6 +194,13 @@ class cb_parallax_public {
 	 * @return   void
 	 */
 	public function define_public_localisation() {
+
+		$post_meta = get_post_meta( get_the_ID(), $this->meta_key, true );
+
+		//* Checks if parallax is enabled and if we need to load the class that localizes the script
+		if( isset($post_meta ) && $post_meta == '' || false == $post_meta['parallax_enabled'] ) {
+			return;
+		}
 
 		$public_localisation = new cb_parallax_public_localisation( $this->get_plugin_name(), $this->get_plugin_domain(), $this->get_plugin_version(), $this->get_meta_key() );
 		$this->loader->add_action( 'wp_enqueue_scripts', $public_localisation, 'get_image_meta', 12 );

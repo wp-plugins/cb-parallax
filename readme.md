@@ -4,8 +4,8 @@ Tags: image, background, fullscreen, parallax, Hintergrund, Bild, Hintergrundbil
 
 Requires at least: 3.9  
 Tested up to: 4.3.1  
-Stable tag: 0.2.5  
-Version: 0.2.5  
+Stable tag: 0.2.6  
+Version: 0.2.6  
 Contributors: demispatti  
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -107,6 +107,10 @@ Yes. If you're using the "Vantage" theme from SiteOrigin, the background image w
 3. Custom background meta box.
 
 == Changelog ==
+
+= Version 0.2.6 =
+
+1. The scripts for the frontend load only if needed
 
 = Version 0.2.5 =
 
